@@ -36,6 +36,16 @@ exports.getOneQuestion = (req, res, next) => {
     );
 };
 
+exports.getOneAnswer = (req, res, next) => {
+    Question.findOne({
+        _id: req.params.id
+    }).then(
+        (question) => {
+            res.status(200).json(question);
+        }
+    )
+}
+
 exports.modifyQuestion = (req, res, next) => {
     const question = new Question({
         _id: req.params.id,
