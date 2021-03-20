@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
     pseudo: { type: String, required: true, unique: true},
     password: { type: String, required: true},
     score: { type: Number, required: false},
-    classe: { type: String, required: true},
+    classe: { type: String, required: false},
     personnage: { type: String, required: false},
     verif: { type: Boolean, required: false},
     progression: { type: Object, required: false}
