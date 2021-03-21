@@ -33,7 +33,7 @@ const Home = () => (
       <div class={style.cta}>
         <div class={style.links}>
           <Link class={style.resume} href="#">Press to<br/>resume</Link>
-          <Link class={style.start} href="#">Press to<br/>start</Link>
+          <Link class={style.start} href="/start">Press to<br/>start</Link>
         </div>
         <img class={style.logo} alt="Super Overlap Quiz" src="/assets/super_overlap.svg" />
       </div>
