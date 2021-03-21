@@ -7,7 +7,8 @@ const userRoutes = require('./routes/user');
 
 mongoose.connect("mongodb+srv://artcann:hzKu5wQjHU9Yvakb@cluster0.d26vi.mongodb.net/overlap?retryWrites=true&w=majority",
   { useNewUrlParser: true,
-    useUnifiedTopology: true })
+    useUnifiedTopology: true,
+    useFindAndModify: false, })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
