@@ -13,7 +13,7 @@ exports.createQuestion = (req, res, next) => {
         }
     ).catch(
         (error) => {
-            res.status(400).json({
+            res.status(500).json({
                 error: error
             });
         }
@@ -29,7 +29,7 @@ exports.getOneQuestion = (req, res, next) => {
         }
     ).catch(
         (error) => {
-            res.status(404).json({
+            res.status(500).json({
                 error: error
             });
         }
@@ -60,7 +60,7 @@ exports.modifyQuestion = (req, res, next) => {
         }
     ).catch(
         (error) => {
-            res.status(400).json({
+            res.status(500).json({
                 error: error
             });
         }
@@ -76,7 +76,7 @@ exports.deleteQuestion = (req, res, next) => {
         }
     ).catch(
         (error) => {
-            res.status(400).json({
+            res.status(500).json({
                 error: error
             });
         }
@@ -90,7 +90,7 @@ exports.getAllQuestion = (req, res, next) => {
         }
     ).catch(
         (error) => {
-            res.status(400).json({
+            res.status(500).json({
                 error: error
             });
         }
