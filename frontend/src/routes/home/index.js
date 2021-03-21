@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Link } from 'preact-router/match';
 import style from './style.css';
 
 const characters = [];
@@ -12,6 +13,11 @@ for (let i = 0; i < 14; i++) {
 
 const Home = () => (
 	<div class={style.home}>
+    <img
+      alt="Background: legs entering in a portal"
+      src="/assets/portal-left.svg"
+      class={[style.portal, style.portalLeft].join(' ')}
+    />
     <div class={style.container}>
       <div class={style.profilePics}>
         {characters.map(
@@ -25,6 +31,10 @@ const Home = () => (
         }
       </div>
       <div class={style.cta}>
+        <div class={style.links}>
+          <Link class={style.resume} href="#">Press to<br/>resume</Link>
+          <Link class={style.start} href="#">Press to<br/>start</Link>
+        </div>
         <img class={style.logo} alt="Super Overlap Quiz" src="/assets/super_overlap.svg" />
       </div>
       <div class={style.profilePics}>
@@ -40,12 +50,7 @@ const Home = () => (
       </div>
     </div>
     <img
-      alt="Background: legs entering in a portal"
-      src="/assets/portal-left.svg"
-      class={[style.portal, style.portalLeft].join(' ')}
-    />
-    <img
-      alt="Background: helf body comming out a portal"
+      alt="Background: half body comming out a portal"
       src="/assets/portal-right.svg"
       class={[style.portal, style.portalRight].join(' ')}
     />

@@ -40,20 +40,6 @@
   width: 100%;
 }
 
-.cta {
-  background-color: #EEEF89;
-}
-
-.cta > .logo {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  max-height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
 .profilePics {
   overflow: hidden;
   display: flex;
@@ -65,4 +51,52 @@
   padding: 10px 5px;
   object-fit: cover;
   height: 100%;
+}
+
+.cta {
+  position: relative;
+  background-color: #EEEF89;
+}
+
+.cta > .logo {
+  position: absolute;
+  width: 100%;
+  max-width: 600px;
+  max-height: 100%;
+  left: 50%;
+  top: 50%;
+  top: calc(50% + 1.3em);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.cta > .links {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.cta > .links a {
+  font-size: 1.3em;
+  height: 100%;
+  color: #FF1E00;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bolder;
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.cta > .links .resume {
+  text-align: left;
+}
+
+.cta > .links .start {
+  text-align: right;
 }
