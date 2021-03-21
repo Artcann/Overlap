@@ -12,7 +12,10 @@ exports.signup = async (req, res, next) => {
             pseudo: req.body.pseudo,
             email: req.body.email,
             password: hash,
-            verif: req.body.verif
+            verif: false,
+            score: 0,
+            classe: req.body.classe,
+            personnage: undefined
         });
         let user = await newUser.save()
         res.status(201).json({message: 'Utilisateur créé !'});
@@ -44,52 +47,58 @@ exports.signup = async (req, res, next) => {
     } catch (err) {
         res.status(500).send(err);
     }
-   
+
 };
 
-exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email })
-    .then(user => {
+exports.login = async (req, res, next) => {
+    try {
+        let user = await User.findOne({ email: req.body.email })
+
         if (!user) {
             return res.status(500).json({ error: 'Utilisateur non trouvé !'});
         }
-        bcrypt.compare(req.body.password, user.password)
-        .then(valid => {
-            if (!valid) {
-                return res.status(500).json({ error: 'Mot de passe incorrect !'});
-            }
-            res.status(200).json({
-                userId: user._id,
-                token: jwt.sign(
-                    { userId: user._id },
-                    'RANDOM_TOKEN_SECRET',
-                    { expiresIn: '24h' }
-                )
-            });
-        })
-        .catch(error => res.status(500).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
+        let valid = await bcrypt.compare(req.body.password, user.password)
+
+        if (!valid) {
+            return res.status(500).json({ error: 'Mot de passe incorrect !'});
+        }
+        res.status(200).json({
+            userId: user._id,
+            token: jwt.sign(
+                { userId: user._id },
+                'RANDOM_TOKEN_SECRET',
+                { expiresIn: '24h' }
+            )
+        });
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
 
-exports.verif = (req, res, next) => {
-    User.findOneAndUpdate(
-        {
-            _id: req.params.id,
-        },
-        {
-            verif: true,
-        }).then(
-            () => {
-                res.status(200).json({
-                    message: "User verified!"
-                });
-            }
-        ).catch(
-            (error) => {
-                res.status(500).json({
-                    error: error
-                });
-            }
-        );
+exports.verif = async (req, res, next) => {
+    try {
+        await User.findOneAndUpdate(
+            {
+                _id: req.params.id,
+            },
+            {
+                verif: true,
+            })
+
+            res.status(200).json({
+                message: "User verified!"
+            });
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+
+exports.getUser = async (req, res, next) => {
+    try {
+        let user = await User.findOne({pseudo: req.params.pseudo});
+
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(500).send(err);
+    }
 };
