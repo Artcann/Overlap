@@ -4,6 +4,6 @@ const router = express.Router();
 const userCtrl = require('../controllers/user');
 const gameCtrl = require('../controllers/game');
 
-router.get('/:pseudo', userCtrl.getUser);
+router.get('/ranking', userCtrl.getRanking);
 
 module.exports = router;
