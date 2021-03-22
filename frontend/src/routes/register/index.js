@@ -2,6 +2,7 @@ import { h } from 'preact';
 import style from './style.css';
 import TextInput from '../../components/register/text-input';
 import Splitter from '../../components/register/splitter';
+import Question from '../../components/register/question';
 
 const characters = [];
 
@@ -12,11 +13,24 @@ for (let i = 0; i < 20; i++) {
   })
 }
 
+const questions = [];
+
+for (let i = 0; i < 10; i++) {
+  questions.push({
+    title: "Toi t'es",
+    answers: [
+      "Link (toujours là pour casser les pots)",
+      "Zelda (j'prèfere attendre tranquille)",
+      "Mario (j'mange des champi <3)",
+      "Luigi (la roue de secours)"
+    ]
+  })
+}
+
 const Register = () => (
   <div class={style.register}>
     <div class={style.container}>
       <div class={style.decoration}>
-				{/* TODO: redo grid system in js */}	
           <div class={style.picturesGrid}>
             {characters.map(character =>
               (
@@ -45,6 +59,7 @@ const Register = () => (
               <TextInput name="mail" label="TON MAIL ISEP" required />
               <TextInput name="password" label="TON MOT DE PASSE" required />
             </section>
+            {questions.map((question, index) => <Question key={index} name={index} question={question} />)}
           </form>
         </div>
       </div>

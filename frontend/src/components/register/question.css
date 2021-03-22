@@ -1,0 +1,26 @@
+.question .title {
+  width: 100%
+}
+
+.question .answerSplitter {
+  width: 75%;
+  padding: 0 14px;
+  margin: 5px 0;
+}
+
+.question .answerSplitter span {
+  padding: 10px;
+}
+
+.question input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.question input:checked + label .answerBackground {
+  background-color: #FF7664;
+}
+.question input:checked {
+  margin: 10px;
+}
