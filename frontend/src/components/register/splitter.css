@@ -1,0 +1,32 @@
+.splitter {
+  display: inline-block;
+  text-align: center;
+  background: black;
+  /*Fall back*/
+  clip-path:
+    polygon(
+      0% 50%,
+      5% 0%,
+      95% 0%,
+      100% 50%,
+      95% 100%,
+      5% 100%
+    );
+}
+
+.splitterInner {
+  background: #EEEF89;
+  display: block;
+  top: 4px;
+  left: 4px;
+  /*Fall back*/
+  clip-path:
+    polygon(
+      0% 50%,
+      5% 0%,
+      95% 0%,
+      100% 50%,
+      95% 100%,
+      5% 100%
+    );
+}

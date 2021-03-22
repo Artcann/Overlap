@@ -1,0 +1,40 @@
+.textInputWrapper {
+  position: relative;
+  overflow: hidden;
+  font-size: 1em;
+  font-weight: bold;
+  color: black;
+  margin: 5px;
+}
+
+.textInputWrapper > input {
+  padding: 0.5em;
+  width: 100%;
+  border: 2px solid black;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+}
+
+.textInputWrapper > input:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+  outline: none;
+}
+
+.textInputWrapper > label {
+  position: absolute;
+  top: 50%;
+  left: 0.5em;
+  right: 0.5em;
+  transform: translateY(-50%);
+}
+
+.textInputWrapper > input:focus + label,
+.textInputWrapper > input:not(:placeholder-shown) + label,
+.textInputWrapper > input:valid + label {
+  opacity: 0;
+}
