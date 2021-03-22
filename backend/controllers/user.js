@@ -13,11 +13,9 @@ exports.signup = async (req, res, next) => {
             email: req.body.email,
             password: hash,
             verif: false,
-            score: 0,
-            classe: req.body.classe,
-            personnage: undefined
+            score: 0
         });
-        let user = await newUser.save()
+        let user = await newUser.save();
         res.status(201).json({message: 'Utilisateur créé !'});
 
         const transporter = nodemailer.createTransport({

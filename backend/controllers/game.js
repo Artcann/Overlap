@@ -4,7 +4,7 @@ const Character = require('../models/Character');
 
 exports.getRanking = async (req, res, next) => {
     try {
-        let ranking = await User.find().sort({ "point": 1, "_id": 1 });
+        let ranking = await User.find().sort({ "score": -1, "_id": 1 });
 
         res.status(200).json(ranking);
     } catch (err) {
@@ -12,7 +12,7 @@ exports.getRanking = async (req, res, next) => {
     }
 };
 
-exports.getDdayInfo = async (req, res, next) => {
+exports.getDayInfo = async (req, res, next) => {
     try {
         let infos = await Day.findOne({ number: req.params.number });
 
