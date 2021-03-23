@@ -8,8 +8,12 @@
   margin: 5px 0;
 }
 
-.question .answerSplitter span {
-  padding: 10px;
+.question .answerSplitter div {
+  overflow: hidden;
+  padding: 5px 14px;
+  color: white;
+  font-weight: 800;
+  -webkit-text-stroke: 0.8px black;
 }
 
 .question input {

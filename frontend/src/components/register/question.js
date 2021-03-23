@@ -21,7 +21,7 @@ const Question = ({ question, name, register, required }) => {
             <input id={id} type='radio' value={index} name={name} ref={register({ required })} />
             <label for={id} class={style.container} key={index}>
               <Splitter className={style.answerSplitter} innerClass={style.answerBackground} borderSize="1px">
-                <span>{answer}</span>
+                <div><span>{answer}</span></div>
               </Splitter>
             </label>
           </>
