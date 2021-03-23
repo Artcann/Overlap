@@ -56,8 +56,8 @@ const Register = () => (
               <Splitter className={style.splitter} borderSize="4px">
                 <h2>Tu es qui toi ?</h2>
               </Splitter>
-              <TextInput name="mail" label="TON MAIL ISEP" required />
-              <TextInput name="password" label="TON MOT DE PASSE" required />
+              <TextInput name="mail" type="email" label="TON MAIL ISEP" required />
+              <TextInput name="password" type="password" label="TON MOT DE PASSE" required />
             </section>
             {questions.map((question, index) => <Question key={index} name={index} question={question} />)}
           </form>
