@@ -71,6 +71,29 @@
   padding: 15px 5px;
 }
 
+@media (max-width: 720px) {
+  .formularUnder {
+    width: 100%;
+    margin-top: 165px;
+  }
+
+  .decoration {
+    width: calc(100% - 10px);
+    left: 5px;
+    right: 5px;
+  }
+
+  .decoration > .picturesGrid {
+    top: 5px;
+    height: 155px;
+    overflow: hidden;
+  }
+
+  .decoration > .overlapTextImage {
+    display: none;
+  }
+}
+
 .formularBackPath {
   clip-path:
     polygon(
