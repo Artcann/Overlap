@@ -22,7 +22,6 @@ const Splitter = ({ className, innerClass, borderSize, children }) => {
 
   return (
     <div class={[style.splitter, className].join(' ')} style={compatibleWebkitPathCss(borderSize) + `padding: ${borderSize} calc(3*${borderSize}/2);`}>
-    {console.log(compatibleWebkitPathCss())}
       <div class={[style.splitterInner, innerClass].join(' ')} style={compatibleWebkitPathCss() + `padding: ${borderSize} calc(3*${borderSize}/2);`}>
         {children}
       </div>

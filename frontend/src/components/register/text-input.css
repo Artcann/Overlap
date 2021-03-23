@@ -5,6 +5,7 @@
   font-weight: bold;
   color: black;
   margin: 5px;
+  cursor: text;
 }
 
 .textInputWrapper > input {
@@ -36,5 +37,5 @@
 .textInputWrapper > input:focus + label,
 .textInputWrapper > input:not(:placeholder-shown) + label,
 .textInputWrapper > input:valid + label {
-  opacity: 0;
+  display: none;
 }

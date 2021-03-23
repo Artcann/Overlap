@@ -30,6 +30,7 @@
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
+    "react-hook-form": "^6.15.5",
     "uuid": "^8.3.2"
   },
   "jest": {

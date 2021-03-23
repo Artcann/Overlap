@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { v4 as uuidv4 } from 'uuid';
 import style from './text-input.css';
 
-const TextInput = ({ label, type, name, className, register, required }) => { 
+const TextInput = ({ label, type, name, pattern, className, register, required }) => { 
   const id = uuidv4();
 
   if (!register)
@@ -13,7 +13,7 @@ const TextInput = ({ label, type, name, className, register, required }) => {
 
   return (
     <div class={[style.textInputWrapper, className].join(' ')}>
-      <input name={name} id={id} ref={register({ required })} type={type} placeholder="&nbsp;" required={required} />
+      <input name={name} id={id} ref={register({ required })} type={type} placeholder="&nbsp;" pattern={pattern} required={required} />
       <label for={id}>{label}</label>
     </div>
   )

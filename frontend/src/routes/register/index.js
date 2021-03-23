@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { useForm } from "react-hook-form";
 import style from './style.css';
 import TextInput from '../../components/register/text-input';
 import Splitter from '../../components/register/splitter';
@@ -27,44 +28,50 @@ for (let i = 0; i < 10; i++) {
   })
 }
 
-const Register = () => (
-  <div class={style.register}>
-    <div class={style.container}>
-      <div class={style.decoration}>
-          <div class={style.picturesGrid}>
-            {characters.map(character =>
-              (
-                <figure>
-                  <img alt={character.name} src={character.image} />
-                </figure>
-              )
-            )}
+const Register = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => console.log(data);
+
+  return (
+    <div class={style.register}>
+      <div class={style.container}>
+        <div class={style.decoration}>
+            <div class={style.picturesGrid}>
+              {characters.map(character =>
+                (
+                  <figure>
+                    <img alt={character.name} src={character.image} />
+                  </figure>
+                )
+              )}
+            </div>
+          <img class={style.overlapTextImage} src="/assets/overlap-text.svg" />
+        </div>
+        <div class={[style.formularBackPath, style.formularUnder].join(' ')}>
+          <div class={[style.formularBackPath, style.formularBackground].join(' ')}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <section class={style.character}>
+                <img alt="Logo Overlap" src="/assets/overlap-logo-simple.svg" />
+                <div class={style.pseudo}>
+                  <h1>Lets choose your character</h1>
+                  <TextInput className={style.pseudoInput} name="pseudo" register={register} label="TON PSEUDO" required/>
+                </div>
+              </section>
+              <section>
+                <Splitter className={style.splitter} borderSize="4px">
+                  <h2>Tu es qui toi ?</h2>
+                </Splitter>
+                <TextInput name="mail" type="email" register={register} label="TON MAIL @ELEVE.ISEP.FR" pattern=".+@eleve.isep.fr" required />
+                <TextInput name="password" type="password" register={register} label="TON MOT DE PASSE" required />
+              </section>
+              {questions.map((question, index) => <Question key={index} name={index} register={register} question={question} />)}
+              <input class={style.submit} type="submit" value="Commencer l'avanture !" />
+            </form>
           </div>
-        <img class={style.overlapTextImage} src="/assets/overlap-text.svg" />
-      </div>
-      <div class={[style.formularBackPath, style.formularUnder].join(' ')}>
-        <div class={[style.formularBackPath, style.formularBackground].join(' ')}>
-          <form>
-            <section class={style.character}>
-              <img alt="Logo Overlap" src="/assets/overlap-logo-simple.svg" />
-              <div class={style.pseudo}>
-                <h1>Lets choose your character</h1>
-                <TextInput className={style.pseudoInput} name="pseudo" label="TON PSEUDO" required/>
-              </div>
-            </section>
-            <section>
-              <Splitter className={style.splitter} borderSize="4px">
-                <h2>Tu es qui toi ?</h2>
-              </Splitter>
-              <TextInput name="mail" type="email" label="TON MAIL ISEP" required />
-              <TextInput name="password" type="password" label="TON MOT DE PASSE" required />
-            </section>
-            {questions.map((question, index) => <Question key={index} name={index} question={question} />)}
-          </form>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+}
 
 export default Register;

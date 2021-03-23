@@ -71,29 +71,6 @@
   padding: 15px 5px;
 }
 
-@media (max-width: 720px) {
-  .formularUnder {
-    width: 100%;
-    margin-top: 165px;
-  }
-
-  .decoration {
-    width: calc(100% - 10px);
-    left: 5px;
-    right: 5px;
-  }
-
-  .decoration > .picturesGrid {
-    top: 5px;
-    height: 155px;
-    overflow: hidden;
-  }
-
-  .decoration > .overlapTextImage {
-    display: none;
-  }
-}
-
 .formularBackPath {
   clip-path:
     polygon(
@@ -108,7 +85,7 @@
 .formularBackPath section {
   margin: 0 auto;
   margin-bottom: 10px;
-  width: 75%;
+  width: 85%;
 }
 
 
@@ -145,3 +122,44 @@
 .formularBackPath h2 {
   margin: 0.2em auto;
 }
+
+.submit {
+  background: none;
+	font-size: 1.4em;
+  border: none;
+	height: 100%;
+	color: #FF1E00;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 800;
+  text-shadow: 2px 2px 0px white;
+}
+
+@media (max-width: 720px) {
+  .formularUnder {
+    width: 100%;
+    margin-top: 165px;
+  }
+
+  .decoration {
+    width: calc(100% - 10px);
+    left: 5px;
+    right: 5px;
+  }
+
+  .decoration > .picturesGrid {
+    top: 5px;
+    height: 155px;
+    overflow: hidden;
+  }
+
+  .decoration > .overlapTextImage {
+    display: none;
+  }
+
+  .formularBackPath section {
+    width: 100%;
+    padding: 0 5px;
+  }
+}
+
