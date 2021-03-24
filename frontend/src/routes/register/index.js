@@ -21,18 +21,29 @@ const questions = [];
 
 for (let i = 0; i < 10; i++) {
   questions.push({
-    title: "Toi t'es",
-    answers: [
-      "Link (toujours là pour casser les pots)",
-      "Zelda (j'prèfere attendre tranquille)",
-      "Mario (j'mange des champi <3)",
-      "Luigi (la roue de secours)"
-    ]
+    en: {
+      title: "You are",
+      answers: [
+        "Link (always here to break the jars)",
+        "Zelda (i'll rather wait)",
+        "Mario (i love schrooms <3)",
+        "Luigi (the spare whell)"
+      ]
+    },
+    fr: {
+      title: "Toi t'es",
+      answers: [
+        "Link (toujours là pour casser les pots)",
+        "Zelda (j'prèfere attendre tranquille)",
+        "Mario (j'mange des champi <3)",
+        "Luigi (la roue de secours)"
+      ]
+    }
   })
 }
 
 const Register = () => {
-  const { translations } = useContext(LanguageContext);
+  const { language, translations } = useContext(LanguageContext);
   const { register, handleSubmit } = useForm();
   const onSubmit = data => console.log(data);
 
@@ -68,7 +79,7 @@ const Register = () => {
                 <TextInput name="mail" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
                 <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
               </section>
-              {questions.map((question, index) => <Question key={index} name={index} register={register} question={question} />)}
+              {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} />)}
               <input class={style.submit} type="submit" value="Commencer l'avanture !" />
             </form>
           </div>
