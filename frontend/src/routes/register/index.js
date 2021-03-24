@@ -5,6 +5,9 @@ import TextInput from '../../components/register/text-input';
 import Splitter from '../../components/register/splitter';
 import Question from '../../components/register/question';
 
+import { useContext } from 'preact/hooks';
+import { LanguageContext } from '../../translations';
+
 const characters = [];
 
 for (let i = 0; i < 20; i++) {
@@ -29,6 +32,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 const Register = () => {
+  const { translations } = useContext(LanguageContext);
   const { register, handleSubmit } = useForm();
   const onSubmit = data => console.log(data);
 
@@ -54,15 +58,15 @@ const Register = () => {
                 <img alt="Logo Overlap" src="/assets/overlap-logo-simple.svg" />
                 <div class={style.pseudo}>
                   <h1>Lets choose your character</h1>
-                  <TextInput className={style.pseudoInput} name="pseudo" register={register} label="TON PSEUDO" required/>
+                  <TextInput className={style.pseudoInput} name="pseudo" register={register} label={translations.userInfos.pseudo.toUpperCase()} required/>
                 </div>
               </section>
               <section>
                 <Splitter className={style.splitter} borderSize="4px">
-                  <h2>Tu es qui toi ?</h2>
+                  <h2>{translations.userInfos.title}</h2>
                 </Splitter>
-                <TextInput name="mail" type="email" register={register} label="TON MAIL @ELEVE.ISEP.FR" pattern=".+@eleve.isep.fr" required />
-                <TextInput name="password" type="password" register={register} label="TON MOT DE PASSE" required />
+                <TextInput name="mail" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
+                <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
               </section>
               {questions.map((question, index) => <Question key={index} name={index} register={register} question={question} />)}
               <input class={style.submit} type="submit" value="Commencer l'avanture !" />

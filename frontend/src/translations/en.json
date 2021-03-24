@@ -1,0 +1,11 @@
+{
+  "language": "en",
+  "messages": {
+    "userInfos": {
+      "title": "Who are you?",
+      "pseudo": "Your nickname",
+      "email": "Your email @eleve.isep.fr",
+      "password": "Your password"
+    }
+  }
+}
