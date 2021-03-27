@@ -18,13 +18,18 @@
 
 .question input {
   position: absolute;
-  opacity: 0;
+  opacity: 0; /* not display none to keep the focus */
   cursor: pointer;
 }
 
 .question input:checked + label .answerBackground {
   background-color: #FF7664;
 }
+
+.question input:focus + label .answerSplitter {
+  background-color: white;
+}
+
 .question input:checked {
   margin: 10px;
 }
