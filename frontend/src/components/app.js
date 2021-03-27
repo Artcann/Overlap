@@ -11,7 +11,7 @@ const App = () => (
     <LanguageProvider>
       <Router>
         <Home path="/" />
-        <Register path="/start" />
+        <Register path="/start/:rest*" />
       </Router>
     </LanguageProvider>
 	</div>

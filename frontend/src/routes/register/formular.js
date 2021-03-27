@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { useForm } from "react-hook-form";
+import { route } from 'preact-router';
 import style from './style.css';
 import TextInput from '../../components/register/text-input';
 import Splitter from '../../components/register/splitter';
@@ -10,7 +11,7 @@ import { LanguageContext } from '../../translations';
 
 const questions = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 3; i++) {
   questions.push({
     en: {
       title: "You are",
@@ -34,12 +35,22 @@ for (let i = 0; i < 10; i++) {
 }
 
 const Formular = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
   const { language, translations } = useContext(LanguageContext);
 
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+
+    // fetch post to the server
+
+    // if not ok show it on screen
+
+    // if ok, set the player and change route
+    route('/start/reveal');
+  };
+
   return (
-    <div class={[style.formularBackPath, style.formularUnder].join(' ')}>
+    <div class={[style.content, style.formularBackPath, style.formularUnder].join(' ')}>
       <div class={[style.formularBackPath, style.formularBackground].join(' ')}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <section class={style.character}>
@@ -56,7 +67,7 @@ const Formular = () => {
             <TextInput name="mail" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
             <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
           </section>
-          {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} />)}
+          {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} required />)}
           <input class={style.submit} type="submit" value="Commencer l'avanture !" />
         </form>
       </div>
