@@ -5,6 +5,7 @@ import { LanguageProvider } from '../translations';
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home';
 import Register from '../routes/register';
+import Game from '../routes/game';
 
 const App = () => (
 	<div id="app">
@@ -12,6 +13,7 @@ const App = () => (
       <Router>
         <Home path="/" />
         <Register path="/start/:rest*" />
+        <Game path="/game/:rest*" />
       </Router>
     </LanguageProvider>
 	</div>
