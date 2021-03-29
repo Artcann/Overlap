@@ -18,21 +18,20 @@ const Decoration = ({ isReveal }) => {
 
   return (
     <div class={decorationClass}>
-      {isReveal ?
+      <div class={style.picturesGrid}>
+        {characters.map(character =>
+          (
+            <figure>
+              <img alt={character.name} src={character.image} />
+            </figure>
+          )
+        )}
+      </div>
+      {isReveal &&
         <h2 class={style.revealMsg}>
           Check tes mails pour valider ton inscription !
-        </h2> :
-        <div class={style.picturesGrid}>
-          {characters.map(character =>
-            (
-              <figure>
-                <img alt={character.name} src={character.image} />
-              </figure>
-            )
-          )}
-        </div>
+        </h2>
       }
-      <img class={style.overlapTextImage} src="/assets/overlap-text.svg" />
     </div>
   )
 }
