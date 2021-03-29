@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const path = require('path');
 
 const User = require('../models/User');
 
@@ -100,3 +101,7 @@ exports.getUser = async (req, res, next) => {
         res.status(500).send(err);
     }
 };
+
+exports.showFormPass = async (req, res, next) => {
+    res.sendFile(path.join(__dirname, "../views/password_form.html"));
+}
