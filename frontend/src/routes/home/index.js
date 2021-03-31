@@ -23,7 +23,7 @@ const Image = () => (
 )
 
 const LoginForm = () => {
-  const { language, translations } = useContext(LanguageContext);
+  const { translations } = useContext(LanguageContext);
 
   const { register, handleSubmit } = useForm();
 
