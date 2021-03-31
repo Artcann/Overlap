@@ -1,5 +1,6 @@
 import { createContext } from 'preact';
-import { useState, useContext } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
+import { route } from 'preact-router';
 import { login as apiLogin } from '../api/auth';
 
 export const AuthContext = createContext();
@@ -9,7 +10,7 @@ export function AuthProvider({ children }) {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const login = async (email, password) => {
+  const login = async (email, password, redirect=undefined) => {
     if (!isLoading) {
       setIsLoading(true)
       try {
@@ -17,6 +18,8 @@ export function AuthProvider({ children }) {
         setUser(user)
         localStorage.setItem('user.token', user.token)
         localStorage.setItem('user.userId', user.userId)
+        if (redirect)
+          route(redirect)
       } catch (e) {
         setError(e)
       } finally {
@@ -25,7 +28,8 @@ export function AuthProvider({ children }) {
     }
   }
 
-  useContext(() => {
+  useEffect(() => {
+      console.log('hey')
     /* TODO: check validity */
     if (localStorage.getItem('user.token') && localStorage.getItem('user.userId')) {
       setUser({

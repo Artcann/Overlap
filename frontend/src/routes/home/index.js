@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { Link } from 'preact-router/match';
-import { Router } from 'preact-router';
+import { Router, route } from 'preact-router';
 import { useForm } from "react-hook-form";
 import style from './style.css';
 
@@ -25,12 +25,16 @@ const Image = () => (
 
 const LoginForm = () => {
   const { translations } = useContext(LanguageContext);
-  const { isLoading, error, login } = useContext(AuthContext);
+  const { isLoading, error, user, login } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = ({email, password}) => {
-    login(email, password)
+    login(email, password, 'game')
   }
+
+  /* TODO: check if user is really usable */
+  if (user)
+    route('/game')
   
   if (isLoading)
     return "is loading..."

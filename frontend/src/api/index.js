@@ -14,10 +14,10 @@ const api = async (path, config={}, jwt=null) => {
     ...config
   }
 
-  const response, json;
+  let response, json;
   try {
-    const response = await fetch(url + path, options);
-    const json = await response.json();
+    response = await fetch(url + path, options);
+    json = await response.json();
   } catch (e) {
     throw {
       success: false,
