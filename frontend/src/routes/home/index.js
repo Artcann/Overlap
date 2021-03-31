@@ -1,9 +1,13 @@
 import { h } from 'preact';
 import { Link } from 'preact-router/match';
 import { Router } from 'preact-router';
+import { useForm } from "react-hook-form";
 import style from './style.css';
 
 import TextInput from '../../components/register/text-input';
+
+import { useContext } from 'preact/hooks';
+import { LanguageContext } from '../../translations';
 
 const characters = [];
 
@@ -19,10 +23,17 @@ const Image = () => (
 )
 
 const LoginForm = () => {
+  const { language, translations } = useContext(LanguageContext);
+
+  const { register, handleSubmit } = useForm();
+
   return (
-    <div class={style.login}>
+    <form class={style.login}>
       <h1>Login</h1>
-    </div>
+      <TextInput name="mail" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
+      <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
+      <input class={style.resume} type="Submit" value="Resume" />
+    </form>
   )
 }
 
