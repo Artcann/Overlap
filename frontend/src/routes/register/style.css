@@ -1,5 +1,6 @@
 .register {
-  background-color: #B11500;
+  background: url('/assets/background.jpg') no-repeat center fixed;
+  background-size: cover;
 	min-height: 100%;
 	width: 100%;
 }
@@ -43,8 +44,9 @@
 }
 
 .decoration > .picturesGrid {
-  top: 15%;
+  top: 50%;
   width: 75%;
+  transform: translateX(-50%) translateY(-50%);
   max-width: 600px;
   display: flex;
   flex-wrap: wrap;
@@ -53,7 +55,8 @@
 }
 
 .decoration > .revealMsg {
-  top: 15%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
   width: 75%;
   max-width: 600px;
   width: 100%;
@@ -71,19 +74,14 @@
 }
 
 .decoration > .picturesGrid figure {
-  flex: 0 0 70px;
-  margin: 2px;
+  flex: 0 0 120px;
+  border: 4px solid black;
+  margin: -3px 0 0 -3px;
 }
 
 .decoration > .picturesGrid img {
   width: 100%;
   height: 100%;
-}
-
-.decoration > .overlapTextImage {
-  bottom: 15%;
-  width: 100%;
-  max-width: 600px;
 }
 
 .content {
