@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'preact/hooks';
 // TODO: edit check prod or dev
 const url = "http://localhost:3000/api"
 
@@ -13,47 +14,70 @@ const api = async (path, config={}, jwt=null) => {
     ...config
   }
 
+  const response, json;
   try {
     const response = await fetch(url + path, options);
     const json = await response.json();
-
-    if (response.status != 200) {
-      return {
-        success: false,
-        errorFrom: 'server',
-        body: json
-      }
-    }
-
-    return {
-      success: true,
-      body: json
-    }
   } catch (e) {
-    return {
+    throw {
       success: false,
       errorFrom: 'browser',
       error: e
     }
   }
+
+  if (response.status != 200) {
+    throw {
+      success: false,
+      errorFrom: 'server',
+      body: json
+    }
+  }
+
+  return {
+    success: true,
+    body: json
+  }
 }
 
-export const get = (path, config={}, jwt=null) => {
+export default api;
+
+export const get = async (path, config={}, jwt=null) => {
   const options = {
     method: 'GET',
     ...config
   }
 
-  return api(path, options, jwt);
+  return await api(path, options, jwt);
 }
 
-export const post = (path, body, config={}, jwt=null) => {
+export const post = async (path, body, config={}, jwt=null) => {
   const options = {
     method: 'POST',
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
+    ...config
   }
 
-  return api(path, options, jwt)
+  return await api(path, options, jwt)
 }
 
-export default api;
+export const useApi = (action, args) => {
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true)
+      try {
+        setResult(await action(...args))
+      } catch (e) {
+        setError(e)
+      } finally {
+        setIsLoading(false)
+      }
+    })()
+  }, [])
+
+  return result, error, isLoading
+}

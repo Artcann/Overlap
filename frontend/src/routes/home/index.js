@@ -8,6 +8,7 @@ import TextInput from '../../components/register/text-input';
 
 import { useContext } from 'preact/hooks';
 import { LanguageContext } from '../../translations';
+import { AuthContext } from '../../contexts/auth';
 
 const characters = [];
 
@@ -24,13 +25,25 @@ const Image = () => (
 
 const LoginForm = () => {
   const { translations } = useContext(LanguageContext);
+  const { isLoading, error, login } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
+  const onSubmit = ({email, password}) => {
+    login(email, password)
+  }
+  
+  if (isLoading)
+    return "is loading..."
+
+  if (error) {
+    console.log(error)
+    return "error"
+  }
 
   return (
-    <form class={style.login}>
+    <form class={style.login} onSubmit={handleSubmit(onSubmit)}>
       <h1>Login</h1>
-      <TextInput name="mail" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
+      <TextInput name="email" type="email" register={register} label={translations.userInfos.email.toUpperCase()} required />
       <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
       <input class={style.resume} type="Submit" value="Resume" />
     </form>
