@@ -90,7 +90,7 @@ const Home = () => (
       </div>
       <div class={style.cta}>
         <div class={style.links}>
-          <Link class={style.resume} href="#">Press to<br/>resume</Link>
+          <Link class={style.resume} href="/login">Press to<br/>resume</Link>
           <Link class={style.start} href="/start">Press to<br/>start</Link>
         </div>
         <Router>
