@@ -9,7 +9,8 @@ const userSchema = mongoose.Schema({
     classe: { type: String, required: false},
     personnage: { type: String, required: false},
     verif: { type: Boolean, required: false},
-    progression: { type: Object, required: false}
+    progression: { type: Object, required: false},
+    password_token: { type: String, required: false}
 });
 
 userSchema.plugin(uniqueValidator);
