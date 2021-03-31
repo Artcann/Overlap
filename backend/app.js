@@ -1,11 +1,14 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config({path: __dirname + '/.env'});
 
 const questionRoutes = require('./routes/question');
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const gameRoutes = require('./routes/game');
+const { urlencoded } = require('body-parser');
 
-mongoose.connect("mongodb+srv://artcann:hzKu5wQjHU9Yvakb@cluster0.d26vi.mongodb.net/overlap?retryWrites=true&w=majority",
+mongoose.connect(process.env.URI_MONGO,
   { useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false, })
@@ -21,9 +24,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/auth', userRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/question', questionRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/game', gameRoutes)
 
 module.exports = app;
