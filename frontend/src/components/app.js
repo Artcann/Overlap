@@ -11,9 +11,9 @@ const App = () => (
 	<div id="app">
     <LanguageProvider>
       <Router>
-        <Home path="/" />
         <Register path="/start/:rest*" />
         <Game path="/game/:rest*" />
+        <Home path="/:rest*" />
       </Router>
     </LanguageProvider>
 	</div>

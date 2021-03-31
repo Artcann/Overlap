@@ -1,6 +1,9 @@
 import { h } from 'preact';
 import { Link } from 'preact-router/match';
+import { Router } from 'preact-router';
 import style from './style.css';
+
+import TextInput from '../../components/register/text-input';
 
 const characters = [];
 
@@ -9,6 +12,18 @@ for (let i = 0; i < 14; i++) {
     name: "Jérémy",
     image: "/assets/profile_pics/vertical/jeremy.jpg"
   })
+}
+
+const Image = () => (
+  <img class={style.logo} alt="Super Overlap Quiz" src="/assets/super_overlap.svg" />
+)
+
+const LoginForm = () => {
+  return (
+    <div class={style.login}>
+      <h1>Login</h1>
+    </div>
+  )
 }
 
 const Home = () => (
@@ -35,7 +50,10 @@ const Home = () => (
           <Link class={style.resume} href="#">Press to<br/>resume</Link>
           <Link class={style.start} href="/start">Press to<br/>start</Link>
         </div>
-        <img class={style.logo} alt="Super Overlap Quiz" src="/assets/super_overlap.svg" />
+        <Router>
+          <Image path="/" />
+          <LoginForm path="/login" />
+        </Router>
       </div>
       <div class={style.profilePics}>
         {characters.map(
