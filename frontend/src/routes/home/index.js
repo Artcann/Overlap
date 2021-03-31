@@ -37,16 +37,31 @@ const LoginForm = () => {
     route('/game')
   
   if (isLoading)
-    return "is loading..."
+    return <h2 class={style.login}>{translations.connection.connecting}</h2>
 
+  let errorMessage;
   if (error) {
-    console.log(error)
-    return "error"
+    if (error.from == 'server') {
+      switch (error.body.type) {
+        case 'USER_NOT_FOUND':
+          errorMessage = translations.error.userNotFound
+          break;
+        case 'INCORRECT_PASSWORD':
+          errorMessage = translations.error.invalidPassword
+          break;
+        default:
+          errorMessage = translations.error.default
+          break;
+      }
+    } else {
+      errorMessage = translations.error.default
+    }
   }
 
   return (
     <form class={style.login} onSubmit={handleSubmit(onSubmit)}>
       <h1>Login</h1>
+      {errorMessage && errorMessage}
       <TextInput name="email" type="email" register={register} label={translations.userInfos.email.toUpperCase()} required />
       <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
       <input class={style.resume} type="Submit" value="Resume" />

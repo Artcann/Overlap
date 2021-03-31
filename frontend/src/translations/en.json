@@ -6,6 +6,14 @@
       "pseudo": "Your nickname",
       "email": "Your email @eleve.isep.fr",
       "password": "Your password"
+    },
+    "error": {
+      "userNotFound": "The user was not found",
+      "invalidPassword": "The password is not correct",
+      "default": "An error has occured"
+    },
+    "connection": {
+      "connecting": "Connexion..."
     }
   }
 }

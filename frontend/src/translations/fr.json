@@ -6,6 +6,14 @@
       "pseudo": "Ton pseudo",
       "email": "Ton email @eleve.isep.fr",
       "password": "Ton mot de passe"
+    },
+    "error": {
+      "userNotFound": "L'uitiliateur n'a pas été trouvé",
+      "invalidPassword": "Vous avez entré le mauvais mot de passe",
+      "default": "Une erreure s'est produite"
+    },
+    "connection": {
+      "connecting": "Connexion..."
     }
   }
 }

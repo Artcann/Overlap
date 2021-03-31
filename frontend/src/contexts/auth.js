@@ -29,7 +29,6 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-      console.log('hey')
     /* TODO: check validity */
     if (localStorage.getItem('user.token') && localStorage.getItem('user.userId')) {
       setUser({
