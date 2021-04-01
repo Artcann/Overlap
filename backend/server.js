@@ -1,6 +1,8 @@
 const http = require('http');
 const app = require('./app');
+const socketIO = require('socket.io');
 const dotenv = require('dotenv');
+const { socket } = require('./socket');
 
 dotenv.config();
 
@@ -40,6 +42,14 @@ const errorHandler = error => {
 };
 
 const server = http.createServer(app);
+const io = socketIO(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+      }
+});
+
+socket(io);
 
 server.on('error', errorHandler);
 server.on('listening', () => {
