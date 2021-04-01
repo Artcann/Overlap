@@ -9,4 +9,20 @@ const daySchema = mongoose.Schema({
     intro_text: { type: String, required: false}
 })
 
-module.exports = mongoose.model('Day', daySchema);
+const model = mongoose.model('Day', daySchema);
+
+model.getDay = async () => {
+    const date = Date.now();
+    const days = await model.find().sort({ "starting_date": -1});
+    let day = undefined;
+    for (const currentDay of days) {
+        if (currentDay.starting_date < date) {
+            day = currentDay
+            break
+        }
+    }
+
+    return day;
+}
+
+module.exports = model;

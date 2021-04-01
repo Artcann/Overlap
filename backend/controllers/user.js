@@ -60,12 +60,15 @@ exports.signup = async (req, res, next) => {
     try {
         hash = await bcrypt.hash(req.body.password, 10)
 
+        const domain = req.body.email.substr(-0, 14);
+
         const newUser = new User({
             pseudo: req.body.pseudo,
             email: req.body.email,
             password: hash,
             verif: false,
-            score: 0
+            score: 0,
+            personnage: domain
         });
         let user = await newUser.save();
         res.status(201).json({message: 'Utilisateur créé !'});
@@ -89,16 +92,24 @@ exports.login = async (req, res, next) => {
 
         if (!user) {
             return res.status(500).json({
-              error: 'Utilisateur non trouvé !',
-              type: 'USER_NOT_FOUND'
+                error: 'Utilisateur non trouvé !',
+                type: 'USER_NOT_FOUND'
             });
         }
+
+        if(!user.verif) {
+            return res.status(500).json({
+                error: 'Utilisateur non vérifié !',
+                type: 'USER_NOT_VERIFIED'
+            });
+        }
+
         let valid = await bcrypt.compare(req.body.password, user.password)
 
         if (!valid) {
             return res.status(500).json({
-              error: 'Mot de passe incorrect !',
-              type: 'INCORRECT_PASSWORD'
+                error: 'Mot de passe incorrect !',
+                type: 'INCORRECT_PASSWORD'
             });
         }
         res.status(200).json({
@@ -134,7 +145,9 @@ exports.verif = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
     try {
-        let user = await User.findOne({pseudo: req.params.pseudo});
+        const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
+        const userId = decodedToken.userId;
+        let user = await User.findOne({_id: userId});
 
         res.status(200).json(user);
     } catch (err) {

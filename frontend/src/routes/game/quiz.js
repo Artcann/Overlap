@@ -1,21 +1,37 @@
 import { h } from 'preact';
-import { useReducer, useEffect, useRef } from 'preact/hooks';
+import { useState, useEffect, useRef, useContext } from 'preact/hooks';
 import socketIOClient from 'socket.io-client';
-import gameReducer from './gameReducer';
 import style from'./style.css';
 
+import { AuthContext } from '../../contexts/auth'
+
 const Quiz = () => {
+  const { user } = useContext(AuthContext);
+
   const socketRef = useRef();
-  const [gameState, gameDispatch] = useReducer(gameReducer, {
-  })
+  
+  const [connected, setConnected] = useState(false);
+  const [question, setQuestion] = useState(null);
+
 
   useEffect(() => {
-    socketRef.current = socketIOClient('http://localhost:3000')
-
-    socketRef.current.emit('test', {
-      message: 'test'
+    socketRef.current = socketIOClient('http://localhost:3000', {
+      extraHeaders: { Authorization: `Bearer ${user.token}` },
+      reconnection: true
     })
+
+    socketRef.current.once('connect', function () {
+      if (!connected) {
+        setConnected(true)
+        console.log('hey')
+        socketRef.current.emit('startGame')
+      }
+    });
   })
+
+
+  if (!connected)
+    return <h1>Connecting...</h1>
 
   return (
     <>

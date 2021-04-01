@@ -6,6 +6,6 @@ const auth = require('../middleware/auth');
 const userCtrl = require('../controllers/user');
 const gameCtrl = require('../controllers/game');
 
-router.get('/:pseudo', auth, userCtrl.getUser);
+router.get('/me', auth, userCtrl.getUser);
 
 module.exports = router;
