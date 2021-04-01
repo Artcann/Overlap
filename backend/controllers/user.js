@@ -33,6 +33,29 @@ const sendMail = (email, body) => {
     });
 }
 
+const getCharacter = async () => {
+    const userResponses = [1,1,1,2,1,3,2,2,2];
+    let overlapResponses = await Character.find();
+    let character = [0, null];
+    let score = 0;
+    for(individualResponses of overlapResponses) {
+        score = 0;
+        for(i = 0; i < individualResponses.question_points.length; i++) {
+            if(userResponses[i] === individualResponses.question_points[i]) {
+                score += 1;
+            }
+        }
+
+        if((score === character[0] && Math.random() < 0.5) || score>character[0]) {
+            character = [score, individualResponses.name]
+        }
+    }
+
+    const characterUser = await Character.findOne({name: character[1]});
+
+    return characterUser;
+}
+
 exports.signup = async (req, res, next) => {
     try {
         hash = await bcrypt.hash(req.body.password, 10)
@@ -46,6 +69,8 @@ exports.signup = async (req, res, next) => {
         });
         let user = await newUser.save();
         res.status(201).json({message: 'Utilisateur créé !'});
+
+        console.log(await getCharacter());
         
         const body = "<h1>Valide ton profil en cliquant sur ce lien !</h1><br><a href=http://localhost:3000/api/auth/verif/" + user._id +
         ">Vérifier mon profil</a>";
