@@ -1,11 +1,13 @@
 import { h } from 'preact';
 import { useState, useEffect, useRef, useContext } from 'preact/hooks';
+import { route } from 'preact-router';
 import socketIOClient from 'socket.io-client';
 import style from'./style.css';
 
 import { AuthContext } from '../../contexts/auth'
 import { LanguageContext } from '../../translations';
 import { socket } from '../../../../backend/socket';
+
 
 const Quiz = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +17,7 @@ const Quiz = () => {
   
   const [connected, setConnected] = useState(false);
   const [question, setQuestion] = useState(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
 
   useEffect(() => {
@@ -32,20 +34,33 @@ const Quiz = () => {
     });
 
     socketRef.current.on('error', () => {
-      setError(true)
+      setError('An error has occured. Please refresh.')
     })
 
-    socketRef.current.on('startGameSuccess', () => {
+    socketRef.current.once('startGameSuccess', () => {
       socketRef.current.emit('nextQuestion')
     })
 
     socketRef.current.on('nextQuestion', question => {
       setQuestion(question)
     })
+
+    socketRef.current.on('endDay', question => {
+      route('/game/end_day')
+    })
+
+    socketRef.current.on('correction', ({answer, points}) => {
+      console.log(answer, points)
+      setTimeout(() => socketRef.current.emit('nextQuestion'), 10_000)
+    })
   })
 
+  const submitAnswer = (index) => {
+    socketRef.current.emit('submitAnswer', {answer: index, question})
+  }
+
   if (error)
-    return <h1>An error has occured. Please refresh.</h1>
+    return <h1>{error}</h1>
 
   if (!connected)
     return <h1>Connecting...</h1>
@@ -58,9 +73,11 @@ const Quiz = () => {
           <img class={style.gameScreen} src="https://1uyxqn3lzdsa2ytyzj1asxmmmpt-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Lot-189-Keith-Haring-Retrospect-1-768x426.jpg" />
         </div>
         <div class={style.gameAnswers}>
-          {question.answers[language].map((answer, index) => (
-            <button class={[style.gameButton].join(' ')} key={index}>{answer}</button>
-          ))}
+          {question.answers[language].map((answer, index) => {
+            return (
+              <button class={[style.gameButton].join(' ')} key={index} onClick={() => submitAnswer(index)}>{answer}</button>
+            )
+          })}
         </div>
       </>
     )

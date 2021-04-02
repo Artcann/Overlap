@@ -15,7 +15,6 @@ exports.socket = (io) => {
   }));
 
   io.on('connection', (socket) => {
-    
     socket.on('startGame', async () => {
       const day = await Day.getDay();
 
@@ -35,7 +34,8 @@ exports.socket = (io) => {
   
         progression[day._id] = shuffle(questions).map(question => {
           question.answer = null
-          question.time = null
+          question.startTime = null
+          question.endTime = null
           return question
         });
         
@@ -58,16 +58,78 @@ exports.socket = (io) => {
 
     socket.on('nextQuestion', async () => {
       const day = await Day.getDay();
-      const questions = (await User.findOne({_id: socket.decoded_token.userId})).progression[day._id];
+      const progression = (await User.findOne({_id: socket.decoded_token.userId})).progression;
+      let questions = progression[day._id]
 
-      for (const question of questions) {
-        if (!question.answer) {
+      let questionSent = false;
+      for (let i = 0; i < questions.length; i++) {
+        if (!questions[i].answer && questions[i] !== 0) {
+          console.log(questions)
+          // TODO: add start time only if not already present
+          if(!questions[i].startTime) {
+            questions[i].startTime = Date.now();
+          }
+          let question = {
+            ...questions[i],
+            correct: undefined
+          }
           socket.emit("nextQuestion", question);
-          return;
+          questionSent = true
+          break;
         }
       }
+
+      if (!questionSent)
+        socket.emit('endDay')
+  
+      await User.findOneAndUpdate(
+        { 
+          _id: socket.decoded_token.userId 
+        },
+        {
+          progression: progression
+        }
+      );
     })
 
-    
+    socket.on("submitAnswer", async ({ answer, question }) => {
+      const day = await Day.getDay();
+      const user = await User.findOne({_id: socket.decoded_token.userId})
+      const progression = user.progression;
+      let questions = progression[day._id];
+
+      for (let i = 0; i < questions.length; i++) {
+        if (question.id == questions[i].id) {
+          if (questions[i].answer || questions[i].answer === 0) {
+            socket.emit('error')
+            break
+          }
+
+          questions[i].answer = answer;
+          questions[i].endTime = Date.now()
+          let points = 0
+          if (questions[i].answer === questions[i].correct) {
+            points += 10;
+            points += Math.min(10, 15_0000/(questions[i].endTime - question[i].startTime));
+            user.score += points;
+          }
+
+          socket.emit("correction", {answer: questions[i].answer, points});
+          break
+        }
+      }
+
+      user.progression[day._id] = questions;
+
+      await User.findOneAndUpdate(
+        { 
+          _id: socket.decoded_token.userId 
+        },
+        user
+      );
+
+      
+
+    })
   })
 }
