@@ -8,7 +8,7 @@ import { AuthContext } from '../../contexts/auth';
 import { LanguageContext } from '../../translations';
 
 const Game = () => {
-  const { initializing, user, isTokenValid, clearAuth } = useContext(AuthContext);
+  const { initializing, user, userInfo, isTokenValid, clearAuth } = useContext(AuthContext);
   const { translations } = useContext(LanguageContext);
   
   const handleRoute = async _ => {
@@ -32,7 +32,7 @@ const Game = () => {
             {/* TODO: Add the overlay */}
           </div>
           <div class={style.menuText}>
-            <span class={style.point}>1738 points</span>
+            {userInfo && <span class={style.point}>{userInfo.score} points</span>}
             <a href="#">Menu</a>
           </div>
         </div>
