@@ -16,6 +16,13 @@
     "connection": {
       "connecting": "Connexion...",
       "initializing": "Chargement de vos données"
+    },
+    "menu": {
+      "ranking": "Classement",
+      "profil": "Mes informations",
+      "terms": "Conditions d'utilisation",
+      "data_management": "Gestion des données",
+      "disconnect": "Se déconnecter"
     }
   }
 }

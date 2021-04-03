@@ -16,6 +16,13 @@
     "connection": {
       "connecting": "Connexion...",
       "initializing": "Loading your informations"
+    },
+    "menu": {
+      "ranking": "Ranking",
+      "profil": "My informations",
+      "terms": "Terms of use",
+      "data_management": "Data management",
+      "disconnect": "Disconnect"
     }
   }
 }

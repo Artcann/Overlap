@@ -1,19 +1,23 @@
 import { h } from 'preact';
 import { Router, route } from 'preact-router';
+import Match from 'preact-router/match';
 import style from './style.css';
 import Quiz from './quiz';
+import Menu from './menu';
 
 import { useContext } from 'preact/hooks';
 import { AuthContext } from '../../contexts/auth';
 import { LanguageContext } from '../../translations';
 
 const Game = () => {
-  const { initializing, user, userInfo, isTokenValid, clearAuth } = useContext(AuthContext);
+  const { isLoading, initializing, user, userInfo, isTokenValid, clearAuth } = useContext(AuthContext);
   const { translations } = useContext(LanguageContext);
   
   const handleRoute = async _ => {
-    /* TODO: trigger checking still connected */
     if (!isTokenValid()) {
+      console.log(isLoading)
+      console.log(initializing)
+      console.log('hey')
       clearAuth()
       route('/')
       return;
@@ -33,16 +37,23 @@ const Game = () => {
           </div>
           <div class={style.menuText}>
             {userInfo && <span class={style.point}>{userInfo.score} points</span>}
-            <a href="#">Menu</a>
+            <Match path="/game/menu">
+              { ({ matches }) => matches ? 
+                <a href="javascript:history.back()">X</a>
+                :
+                <a href="/game/menu">Menu</a>
+              }
+            </Match>
           </div>
         </div>
         <img class={[style.joycon, style.joyconLeft].join(' ')} src="/assets/joycon-left.svg" alt="Nintendo Switch's Joycon" />
         <img class={[style.joycon, style.joyconRight].join(' ')} src="/assets/joycon-right.svg" alt="Nintendo Switch's Joycon" />
         <div class={style.gameRoot}>
-        { initializing ?
+        { (isLoading || initializing) ?
           <h1>{translations.connection.initializing}</h1>
           :
           (<Router onChange={handleRoute}>
+            <Menu path="/game/menu" />
             <Quiz path="/game" />
           </Router>)
         }

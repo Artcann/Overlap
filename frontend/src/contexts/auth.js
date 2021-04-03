@@ -21,10 +21,11 @@ export function AuthProvider({ children }) {
         setUser(user)
         localStorage.setItem('user.token', user.token)
         localStorage.setItem('user.userId', user.userId)
+        // Get the user infos
+        await getUserInfo(user.token)
+        // Redirect
         if (redirect)
           route(redirect)
-        // Then get the user infos on the side
-        getUserInfo(user.token)
       } catch (e) {
         setError(e)
       } finally {
