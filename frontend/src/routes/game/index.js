@@ -4,6 +4,7 @@ import Match from 'preact-router/match';
 import style from './style.css';
 import Quiz from './quiz';
 import Menu from './menu';
+import Ranking from './Ranking';
 
 import { useContext } from 'preact/hooks';
 import { AuthContext } from '../../contexts/auth';
@@ -54,6 +55,7 @@ const Game = () => {
           :
           (<Router onChange={handleRoute}>
             <Menu path="/game/menu" />
+            <Ranking path="/game/ranking" />
             <Quiz path="/game" />
           </Router>)
         }

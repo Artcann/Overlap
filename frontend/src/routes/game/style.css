@@ -108,6 +108,16 @@
   max-width: 230px;
 }
 
+.ranking {
+  width: 100%;
+  max-width: 230px;
+  text-align: left;
+}
+
+.ranking  p{
+  margin: 5px 10px;
+}
+
 .gameButton {
   width: 100%;
   display: block;

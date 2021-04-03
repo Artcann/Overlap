@@ -67,17 +67,20 @@ export const useApi = (action, args) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       setIsLoading(true)
       try {
         setResult(await action(...args))
       } catch (e) {
+        console.log(e)
         setError(e)
       } finally {
         setIsLoading(false)
       }
-    })()
+    }
+
+    fetchData()
   }, [])
 
-  return result, error, isLoading
+  return [result, error, isLoading]
 }

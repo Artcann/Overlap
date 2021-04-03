@@ -4,7 +4,13 @@ const Character = require('../models/Character');
 
 exports.getRanking = async (req, res, next) => {
     try {
-        let ranking = await User.find().sort({ "score": -1, "_id": 1 });
+        let ranking = await User
+                              .find()
+                              .select({
+                                "pseudo": 1,
+                                "score": 1
+                              })
+                              .sort({ "score": -1, "_id": 1 });
 
         res.status(200).json(ranking);
     } catch (err) {

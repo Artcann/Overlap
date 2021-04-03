@@ -15,7 +15,8 @@
     },
     "connection": {
       "connecting": "Connexion...",
-      "initializing": "Chargement de vos données"
+      "initializing": "Chargement de vos données",
+      "loading": "Loading..."
     },
     "menu": {
       "ranking": "Classement",

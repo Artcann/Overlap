@@ -14,8 +14,9 @@
       "refresh": "Please refresh"
     },
     "connection": {
-      "connecting": "Connexion...",
-      "initializing": "Loading your informations"
+      "connecting": "Connection...",
+      "initializing": "Loading your informations",
+      "loading": "Loading..."
     },
     "menu": {
       "ranking": "Ranking",
