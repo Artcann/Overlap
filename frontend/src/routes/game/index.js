@@ -5,6 +5,10 @@ import style from './style.css';
 import Quiz from './quiz';
 import Menu from './menu';
 import Ranking from './Ranking';
+import DayIntroduction from './day_introduction';
+
+import { useApi } from '../../api';
+import { day as getDay } from '../../api/game';
 
 import { useContext } from 'preact/hooks';
 import { AuthContext } from '../../contexts/auth';
@@ -13,12 +17,11 @@ import { LanguageContext } from '../../translations';
 const Game = () => {
   const { isLoading, initializing, user, userInfo, isTokenValid, clearAuth } = useContext(AuthContext);
   const { translations } = useContext(LanguageContext);
+
+  const [day] = useApi(getDay);
   
   const handleRoute = async _ => {
     if (!isTokenValid()) {
-      console.log(isLoading)
-      console.log(initializing)
-      console.log('hey')
       clearAuth()
       route('/')
       return;
@@ -30,7 +33,13 @@ const Game = () => {
 
   return (
     <div class={style.game}>
-      <div class={style.gameContainer}>
+      <div 
+        class={style.gameContainer}
+        style={{
+          backgroundImage: day ? `url("/assets/theme/${day.theme}/background.jpg")` : undefined,
+        }}
+      >
+        <div class={style.darkener}></div>
         <div class={style.menu}>
           <div class={style.profile}>
             <img alt="Picture of your character" src="/assets/profile_pics/square/jeremy.jpg" />
@@ -56,7 +65,8 @@ const Game = () => {
           (<Router onChange={handleRoute}>
             <Menu path="/game/menu" />
             <Ranking path="/game/ranking" />
-            <Quiz path="/game" />
+            <Quiz path="/game/quiz" />
+            <DayIntroduction day={day} path="/game" />
           </Router>)
         }
         </div>

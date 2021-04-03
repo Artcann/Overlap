@@ -7,6 +7,6 @@ const userCtrl = require('../controllers/user');
 const gameCtrl = require('../controllers/game');
 
 router.get('/ranking', auth, gameCtrl.getRanking);
-router.get('/day/:number', auth, gameCtrl.getDay);
+router.get('/day', gameCtrl.getDay);
 
 module.exports = router;

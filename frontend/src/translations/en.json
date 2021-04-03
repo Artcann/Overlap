@@ -19,11 +19,20 @@
       "loading": "Loading..."
     },
     "menu": {
+      "game": "Game",
       "ranking": "Ranking",
       "profil": "My informations",
       "terms": "Terms of use",
       "data_management": "Data management",
       "disconnect": "Disconnect"
+    },
+    "dayIntroduction": {
+      "button": "Start the quiz",
+      "theme": {
+        "batman": "Will you do the law?",
+        "scream": "Come in, don't be scared...",
+        "sherlock": "Elementary my dear..."
+      }
     }
   }
 }

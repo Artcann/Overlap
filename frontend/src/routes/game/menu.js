@@ -18,6 +18,7 @@ const Menu = () => {
 
   return (
     <div class={style.gameAnswers}>
+      <a class={style.gameButton} href="/game">{translations.menu.game}</a>
       <a class={style.gameButton} href="/game/ranking">{translations.menu.ranking}</a>
       <a class={style.gameButton} href="#">{translations.menu.profil}</a>
       <a class={style.gameButton} href="#">{translations.menu.terms}</a>

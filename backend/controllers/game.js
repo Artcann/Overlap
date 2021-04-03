@@ -20,9 +20,12 @@ exports.getRanking = async (req, res, next) => {
 
 exports.getDay = async (req, res, next) => {
     try {
-        let infos = await Day.findOne({ number: req.params.number });
+        const infos = await Day.getDay();
 
-        res.status(200).json(infos);
+        res.status(200).json({
+          _id: infos._id,
+          theme: infos.theme
+        });
     } catch (err) {
         res.status(500).send(err);
     }

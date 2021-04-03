@@ -19,11 +19,21 @@
       "loading": "Loading..."
     },
     "menu": {
+      "game": "Jeu",
       "ranking": "Classement",
       "profil": "Mes informations",
       "terms": "Conditions d'utilisation",
       "data_management": "Gestion des données",
       "disconnect": "Se déconnecter"
+    },
+    "dayIntroduction": {
+      "button": "Commencer le questionnaire",
+      "theme": {
+        "batman": "Ferez-vous la loi ?",
+        "scream": "Entrez, nayez pas peur...",
+        "sherlock": "Élémentaire mon cher..."
+      }
     }
+
   }
 }
