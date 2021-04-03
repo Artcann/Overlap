@@ -7,11 +7,10 @@ import { useContext } from 'preact/hooks';
 import { AuthContext } from '../../contexts/auth';
 
 const Game = () => {
-  const { user } = useContext(AuthContext);
+  const { initializing, user } = useContext(AuthContext);
   
   const handleRoute = async _ => {
     /* TODO: trigger checking still connected */
-    console.log(user)
     if (!user)
       route('/', true);
   }
@@ -32,9 +31,13 @@ const Game = () => {
         <img class={[style.joycon, style.joyconLeft].join(' ')} src="/assets/joycon-left.svg" alt="Nintendo Switch's Joycon" />
         <img class={[style.joycon, style.joyconRight].join(' ')} src="/assets/joycon-right.svg" alt="Nintendo Switch's Joycon" />
         <div class={style.gameRoot}>
-          <Router onChange={handleRoute}>
+        { initializing ?
+          <h1>Game starting...</h1>
+          :
+          (<Router onChange={handleRoute}>
             <Quiz path="/game" />
-          </Router>
+          </Router>)
+        }
         </div>
       </div>
     </div>

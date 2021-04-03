@@ -145,12 +145,20 @@ exports.verif = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
     try {
+        const token = req.headers.authorization.split(' ')[1]
         const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
         const userId = decodedToken.userId;
-        let user = await User.findOne({_id: userId});
+        const user = new Object(await User.findOne({_id: userId}));
 
-        res.status(200).json(user);
+        res.status(200).json({
+          pseudo: user.pseudo,
+          email: user.email,
+          score: user.score,
+          tokenExp: decodedToken.exp,
+          _id: user._id
+        });
     } catch (err) {
+        console.error(err)
         res.status(500).send(err);
     }
 };
