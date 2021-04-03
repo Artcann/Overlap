@@ -11,7 +11,7 @@ import { socket } from '../../../../backend/socket';
 
 const Quiz = () => {
   const { user } = useContext(AuthContext);
-  const { language } = useContext(LanguageContext);
+  const { language, translations } = useContext(LanguageContext);
 
   const socketRef = useRef();
   
@@ -34,7 +34,7 @@ const Quiz = () => {
     });
 
     socketRef.current.on('error', () => {
-      setError('An error has occured. Please refresh.')
+      setError(`${translations.error.default}. ${translations.error.refresh}.`)
     })
 
     socketRef.current.once('startGameSuccess', () => {
@@ -63,7 +63,7 @@ const Quiz = () => {
     return <h1>{error}</h1>
 
   if (!connected)
-    return <h1>Connecting...</h1>
+    return <h1>{translations.connection.connecting}</h1>
 
   if (question) {
     return (

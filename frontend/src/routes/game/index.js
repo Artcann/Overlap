@@ -5,12 +5,20 @@ import Quiz from './quiz';
 
 import { useContext } from 'preact/hooks';
 import { AuthContext } from '../../contexts/auth';
+import { LanguageContext } from '../../translations';
 
 const Game = () => {
-  const { initializing, user } = useContext(AuthContext);
+  const { initializing, user, isTokenValid, clearAuth } = useContext(AuthContext);
+  const { translations } = useContext(LanguageContext);
   
   const handleRoute = async _ => {
     /* TODO: trigger checking still connected */
+    if (!isTokenValid()) {
+      clearAuth()
+      route('/')
+      return;
+    }
+
     if (!user)
       route('/', true);
   }
@@ -32,7 +40,7 @@ const Game = () => {
         <img class={[style.joycon, style.joyconRight].join(' ')} src="/assets/joycon-right.svg" alt="Nintendo Switch's Joycon" />
         <div class={style.gameRoot}>
         { initializing ?
-          <h1>Game starting...</h1>
+          <h1>{translations.connection.initializing}</h1>
           :
           (<Router onChange={handleRoute}>
             <Quiz path="/game" />

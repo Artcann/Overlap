@@ -10,10 +10,12 @@
     "error": {
       "userNotFound": "The user was not found",
       "invalidPassword": "The password is not correct",
-      "default": "An error has occured"
+      "default": "An error has occured",
+      "refresh": "Please refresh"
     },
     "connection": {
-      "connecting": "Connexion..."
+      "connecting": "Connexion...",
+      "initializing": "Loading your informations"
     }
   }
 }
