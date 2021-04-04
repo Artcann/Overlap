@@ -33,8 +33,7 @@ const sendMail = (email, body) => {
     });
 }
 
-const getCharacter = async () => {
-    const userResponses = [1,1,1,2,1,3,2,2,2];
+const getCharacter = async (userResponses) => {
     let overlapResponses = await Character.find();
     let character = [0, null];
     let score = 0;
@@ -62,23 +61,26 @@ exports.signup = async (req, res, next) => {
 
         const domain = req.body.email.substr(-0, 14);
 
+        const character = await getCharacter(req.body.userResponses);
+        character.question_points = null;
+
         const newUser = new User({
             pseudo: req.body.pseudo,
             email: req.body.email,
             password: hash,
             verif: false,
             score: 0,
-            personnage: domain
+            personnage: character
         });
         let user = await newUser.save();
-        res.status(201).json({message: 'Utilisateur créé !'});
 
-        console.log(await getCharacter());
+        res.status(201).json({message: 'Utilisateur créé !', character});
         
         const body = "<h1>Valide ton profil en cliquant sur ce lien !</h1><br><a href=http://localhost:3000/api/auth/verif/" + user._id +
         ">Vérifier mon profil</a>";
 
         sendMail(req.body.email, body);
+
 
     } catch (err) {
         res.status(500).send(err);
