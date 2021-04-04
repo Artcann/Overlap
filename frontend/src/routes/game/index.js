@@ -42,7 +42,10 @@ const Game = () => {
         <div class={style.darkener}></div>
         <div class={style.menu}>
           <div class={style.profile}>
-            <img alt="Picture of your character" src="/assets/profile_pics/square/jeremy.jpg" />
+            <img class={style.profilePic} alt="Picture of your character" src="/assets/profile_pics/square/jeremy.jpg" />
+            {day &&
+              <img class={style.profileOverlay} alt="Overlay" src={`/assets/theme/${day.theme}/overlay.svg`} />
+            }
             {/* TODO: Add the overlay */}
           </div>
           <div class={style.menuText}>
