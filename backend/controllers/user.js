@@ -61,7 +61,7 @@ exports.signup = async (req, res, next) => {
 
         const domain = req.body.email.substr(-0, 14);
 
-        const character = await getCharacter(req.body.userResponses);
+        const character = await getCharacter(req.body);
         character.question_points = null;
 
         const newUser = new User({
@@ -74,7 +74,7 @@ exports.signup = async (req, res, next) => {
         });
         let user = await newUser.save();
 
-        res.status(201).json({message: 'Utilisateur créé !', character});
+        res.status(200).json({message: 'Utilisateur créé !', character});
         
         const body = "<h1>Valide ton profil en cliquant sur ce lien !</h1><br><a href=http://localhost:3000/api/auth/verif/" + user._id +
         ">Vérifier mon profil</a>";
@@ -83,6 +83,7 @@ exports.signup = async (req, res, next) => {
 
 
     } catch (err) {
+        console.error(err)
         res.status(500).send(err);
     }
 

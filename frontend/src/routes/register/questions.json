@@ -1,0 +1,202 @@
+[
+  {
+    "fr": {
+      "title": "En soirée tu préfères boire",
+      "answers": [
+        "De la cristaline",
+        "Un bon pastis",
+        "Un ptit jäger bomb",
+        "Euuuh j’m’en souviens plus"
+      ]
+    },
+    "en": {
+      "title": "At a party, you prefer drinking",
+      "answers": [
+        "Cristaline water",
+        "A nice pastis",
+        "A lil’ jägerbomb",
+        "Uuuhhh I don’t remember"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Si tu pouvais être un personnage de Pop culture tu serais",
+      "answers": [
+        "Sam des Totally Spies",
+        "Lara Croft",
+        "Batman",
+        "Homer Simpson"
+      ]
+    },
+    "en": {
+      "title": "If you could be a pop culture character, you would be",
+      "answers": [
+        "Totally Spies’ Sam",
+        "Lara Croft",
+        "Batman",
+        "Homer Simpson"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Si tu pouvais avoir un pouvoir",
+      "answers": [
+        "Etre invisible",
+        "Voler, évidemment",
+        "Voyager dans le temps",
+        "Je laisse ça aux faibles"
+      ]
+    },
+    "en": {
+      "title": "If you could have a superpower",
+      "answers": [
+        "Be invisible",
+        "Flying, obviously",
+        "Time travelling",
+        "I leave that to the weak, I’m powerful enough as I am"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "À poudlard, quel serait ton cours préféré ?",
+      "answers": [
+        "Le cours de potions",
+        "Le cours de Défense contre les forces du mal",
+        "L'histoire de la magie",
+        "Entraînement de Quidditch"
+      ]
+    },
+    "en": {
+      "title": "At Hogwarts, what would be your favorite class?",
+      "answers": [
+        "Potion making",
+        "Defense against the dark arts",
+        "History of magic",
+        "Quidditch training"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Quel était ton dessin animé préféré ?",
+      "answers": [
+        "Foot 2 rue",
+        "Oggy et les cafard",
+        "Scooby Doo",
+        "Ratz"
+      ]
+    },
+    "en": {
+      "title": "What was your favorite cartoon?",
+      "answers": [
+        "Street football",
+        "Oggy and the cockroaches",
+        "Scooby-Doo",
+        "Ratz"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Quel méchant serais-tu ?",
+      "answers": [
+        "Scar, le vilain tonton",
+        "Dark Vador, le côté obscur n’était pas un choix",
+        "Karaba, c’est une bonne situation fétiche ?",
+        "Sauron, méchant par conviction"
+      ]
+    },
+    "en": {
+      "title": "What villain would you be?",
+      "answers": [
+        "Scar, the bad uncle",
+        "Darth Vader, the dark side wasn’t a choice",
+        "Karaba, is fetish a good situation?",
+        "Sauron, villain by conviction"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Ton type de soirée c’est plutôt…",
+      "answers": [
+        "En boite pour faire des rencontres",
+        "Entre potes à la maison",
+        "Netflix & Chill",
+        "Cul nu dans la rue, légitime défonce"
+      ]
+    },
+    "en": {
+      "title": "Your kind of night out",
+      "answers": [
+        "At the club to meet new people",
+        "With your friends at your place",
+        "Netflix and chill",
+        "Bare ass outside, drunk AF"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Niveaux jeux vidéo t’es plutôt…",
+      "answers": [
+        "Jeux multi bien vener, t’es un vrai G@MER",
+        "Jeux indé chill, t’aime le pixel art",
+        "Jeux mobile, déjà niveau 876 sur Candy Crush",
+        "Tu ne joues pas, tu préfères prendre l’air"
+      ]
+    },
+    "en": {
+      "title": "Regarding video games, you’re mostly",
+      "answers": [
+        "Multi-player, you’re a real G@MER",
+        "Chill indie games, you love pixel art",
+        "Mobile games, already level 876 on Candy Crush",
+        "You don’t play, going out for the win"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Quel est ton type de films ?",
+      "answers": [
+        "Les films d’action bien vener, la bagarre avant tout",
+        "Les comédies romantiques, avec du chocolat et de la glace",
+        "Les films d’auteur, en noir et blanc",
+        "La SF, t’es un geek, un vrai"
+      ]
+    },
+    "en": {
+      "title": "What’s your kind of movie?",
+      "answers": [
+        "I’m all for action movies, I love people hitting each other",
+        "Rom-com, under a blanket with chocolate and ice cream",
+        "Black and white author movies",
+        "Science fiction, I’m a real nerd"
+      ]
+    }
+  },
+  {
+    "fr": {
+      "title": "Quelle est ta SOAT (Serie Of All Time) ?",
+      "answers": [
+        "Lost, t’es un puriste",
+        "Game Of Throne, que tu as regardé pour l’histoire évidemment",
+        "Friends, t’aime pas te prendre la tête",
+        "Black Mirror, t’es engagé"
+      ]
+    },
+    "en": {
+      "title": "What’s your SOAT (Serie of all time?)",
+      "answers": [
+        "Lost, I’m a purist",
+        "Game of Thrones, I watched it for the plot",
+        "Friends, I don’t like complicated plots",
+        "Black mirror, I am now terrified of technology"
+      ]
+    }
+  }
+]

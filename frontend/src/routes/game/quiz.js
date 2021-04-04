@@ -6,11 +6,13 @@ import style from'./style.css';
 
 import { AuthContext } from '../../contexts/auth'
 import { LanguageContext } from '../../translations';
-import { socket } from '../../../../backend/socket';
 
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
 
 const Quiz = () => {
-  const { user } = useContext(AuthContext);
+  const { user, incrementScore } = useContext(AuthContext);
   const { language, translations } = useContext(LanguageContext);
 
   const socketRef = useRef();
@@ -18,6 +20,7 @@ const Quiz = () => {
   const [connected, setConnected] = useState(false);
   const [question, setQuestion] = useState(null);
   const [error, setError] = useState(null);
+  const [answerGlobal, setAnswer] = useState(null);
 
 
   useEffect(() => {
@@ -42,6 +45,8 @@ const Quiz = () => {
     })
 
     socketRef.current.on('nextQuestion', question => {
+      setAnswer(null)
+      question.answers = shuffle(question.answers[language].map((answer, id) => [id, answer]))
       setQuestion(question)
     })
 
@@ -50,12 +55,22 @@ const Quiz = () => {
     })
 
     socketRef.current.on('correction', ({answer, points}) => {
-      console.log(answer, points)
-      setTimeout(() => socketRef.current.emit('nextQuestion'), 10_000)
+      setAnswer({
+        ...answerGlobal,
+        correct: answer,
+        points
+      });
+      incrementScore(points)
+      setTimeout(() => socketRef.current.emit('nextQuestion'), 5_000)
     })
   })
 
   const submitAnswer = (index) => {
+    setAnswer({
+      ours: index,
+      correct: null,
+      points: null
+    })
     socketRef.current.emit('submitAnswer', {answer: index, question})
   }
 
@@ -73,9 +88,28 @@ const Quiz = () => {
           <img class={style.gameScreen} src="https://1uyxqn3lzdsa2ytyzj1asxmmmpt-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Lot-189-Keith-Haring-Retrospect-1-768x426.jpg" />
         </div>
         <div class={style.gameAnswers}>
-          {question.answers[language].map((answer, index) => {
+          {question.answers.map(([index, answer]) => {
+            const classNames = [style.gameButton]
+            let text = answer
+
+            if (answerGlobal && answerGlobal.correct) {
+              if (index == answerGlobal.correct) {
+                classNames.push(style.valid)
+                text += ' +' + answerGlobal.points
+              }
+              
+              if (index == answerGlobal.ours && index != answerGlobal.correct)
+                classNames.push(style.invalid)
+            }
+
             return (
-              <button class={[style.gameButton].join(' ')} key={index} onClick={() => submitAnswer(index)}>{answer}</button>
+              <button
+                class={classNames.join(' ')}
+                key={index}
+                onClick={() => answerGlobal === null ? submitAnswer(index) : undefined}
+              >
+                {text}
+              </button>
             )
           })}
         </div>

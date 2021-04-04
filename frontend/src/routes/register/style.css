@@ -1,4 +1,6 @@
 .register {
+  display: table;
+  height: inherit;
   background: url('/assets/background.jpg') no-repeat center fixed;
   background-size: cover;
 	min-height: 100%;
@@ -119,6 +121,12 @@
       100% 100%,
       0 100%
     )
+}
+
+.formularBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .formularBackPath section {

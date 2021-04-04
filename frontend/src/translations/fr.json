@@ -5,7 +5,8 @@
       "title": "T'es qui toi ?",
       "pseudo": "Ton pseudo",
       "email": "Ton email @eleve.isep.fr",
-      "password": "Ton mot de passe"
+      "password": "Ton mot de passe",
+      "emailCheckMessage": "Check tes mails pour valider ton inscription"
     },
     "error": {
       "userNotFound": "L'uitiliateur n'a pas été trouvé",
@@ -34,6 +35,5 @@
         "sherlock": "Élémentaire mon cher..."
       }
     }
-
   }
 }

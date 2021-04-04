@@ -50,6 +50,13 @@ export function AuthProvider({ children }) {
     }
   }
 
+  const incrementScore = (points) => {
+    setUserInfo({
+      ...userInfo,
+      score: userInfo.score + points
+    })
+  }
+
   const isTokenValid = (ui=null) => {
     if (!ui) ui = userInfo
     if (!ui) return false
@@ -86,7 +93,7 @@ export function AuthProvider({ children }) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, error, isLoading, initializing, userInfo, isTokenValid, clearAuth, login }}>
+    <AuthContext.Provider value={{ user, error, isLoading, initializing, userInfo, isTokenValid, clearAuth, login, incrementScore }}>
       { children }
     </AuthContext.Provider>
   )

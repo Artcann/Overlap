@@ -5,49 +5,57 @@ import style from './style.css';
 import TextInput from '../../components/register/text-input';
 import Splitter from '../../components/register/splitter';
 import Question from '../../components/register/question';
+import { signup } from '../../api/auth';
 
-import { useContext } from 'preact/hooks';
+import { useContext, useState } from 'preact/hooks';
 import { LanguageContext } from '../../translations';
 
-const questions = [];
+import questions from './questions.json';
 
-for (let i = 0; i < 3; i++) {
-  questions.push({
-    en: {
-      title: "You are",
-      answers: [
-        "Link (always here to break the jars)",
-        "Zelda (i'll rather wait)",
-        "Mario (i love schrooms <3)",
-        "Luigi (the spare whell)"
-      ]
-    },
-    fr: {
-      title: "Toi t'es",
-      answers: [
-        "Link (toujours là pour casser les pots)",
-        "Zelda (j'prèfere attendre tranquille)",
-        "Mario (j'mange des champi <3)",
-        "Luigi (la roue de secours)"
-      ]
-    }
-  })
-}
-
-const Formular = () => {
+const Formular = ({ setCharacter }) => {
   const { language, translations } = useContext(LanguageContext);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const { register, handleSubmit } = useForm();
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = async data => {
+    setIsLoading(true)
 
-    // fetch post to the server
+    try {
+      console.log(data)
+      const response = await signup(data)
+      console.log(response)
+      
+      setCharacter(response.character)
+      setIsLoading(false)
+      
+      route('/start/reveal');
+    } catch (e) {
+      setError(e)
+    }
 
-    // if not ok show it on screen
-
-    // if ok, set the player and change route
-    route('/start/reveal');
+    setIsLoading(false)
   };
+
+  console.log(error)
+  if (error)
+    return (
+      <div class={[style.content, style.formularBackPath, style.formularUnder].join(' ')}>
+        <div class={[style.formularBackPath, style.formularBackground].join(' ')}>
+          <h1>{translations.error.default}</h1>
+        </div>
+      </div>
+    )
+
+  if (isLoading)
+    return (
+      <div class={[style.content, style.formularBackPath, style.formularUnder].join(' ')}>
+        <div class={[style.formularBackPath, style.formularBackground].join(' ')}>
+          <h1>{translations.connection.initializing}</h1>
+        </div>
+      </div>
+    )
 
   return (
     <div class={[style.content, style.formularBackPath, style.formularUnder].join(' ')}>
@@ -64,7 +72,7 @@ const Formular = () => {
             <Splitter className={style.splitter} borderSize="4px">
               <h2>{translations.userInfos.title}</h2>
             </Splitter>
-            <TextInput name="mail" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
+            <TextInput name="email" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
             <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
           </section>
           {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} required />)}

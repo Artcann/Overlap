@@ -57,15 +57,14 @@ exports.socket = (io) => {
     })
 
     socket.on('nextQuestion', async () => {
+      console.log('next')
       const day = await Day.getDay();
       const progression = (await User.findOne({_id: socket.decoded_token.userId})).progression;
       let questions = progression[day._id]
 
       let questionSent = false;
       for (let i = 0; i < questions.length; i++) {
-        if (!questions[i].answer && questions[i] !== 0) {
-          console.log(questions)
-          // TODO: add start time only if not already present
+        if (!questions[i].answer && questions[i].answer !== 0) {
           if(!questions[i].startTime) {
             questions[i].startTime = Date.now();
           }
@@ -100,6 +99,7 @@ exports.socket = (io) => {
 
       for (let i = 0; i < questions.length; i++) {
         if (question.id == questions[i].id) {
+          console.log(questions[i].answer)
           if (questions[i].answer || questions[i].answer === 0) {
             socket.emit('error')
             break
@@ -110,26 +110,25 @@ exports.socket = (io) => {
           let points = 0
           if (questions[i].answer === questions[i].correct) {
             points += 10;
-            points += Math.min(10, 15_0000/(questions[i].endTime - question[i].startTime));
+            points += Math.floor(Math.min(10, 15_000/(questions[i].endTime - questions[i].startTime)));
             user.score += points;
           }
+          
+          progression[day._id][i] = questions[i] 
+          await User.findOneAndUpdate(
+            { 
+              _id: socket.decoded_token.userId 
+            },
+            {
+              score: user.score,
+              progression
+            }
+          );
 
           socket.emit("correction", {answer: questions[i].answer, points});
           break
         }
       }
-
-      user.progression[day._id] = questions;
-
-      await User.findOneAndUpdate(
-        { 
-          _id: socket.decoded_token.userId 
-        },
-        user
-      );
-
-      
-
     })
   })
 }
