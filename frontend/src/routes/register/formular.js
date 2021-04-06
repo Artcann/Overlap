@@ -76,7 +76,7 @@ const Formular = ({ setCharacter }) => {
             <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
           </section>
           {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} required />)}
-          <input class={style.submit} type="submit" value="Commencer l'avanture !" />
+          <input class={style.submit} type="submit" value={translations.userInfos.startButton} />
         </form>
       </div>
     </div>
