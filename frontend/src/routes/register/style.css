@@ -87,6 +87,7 @@
 }
 
 .content {
+  z-index: 1;
   position: relative;
   width: 520px;
   min-height: 100%; /* Fallback */
@@ -99,6 +100,7 @@
 }
 
 .formularUnder {
+  position: relative;
   background-color: #131A28;
   margin: 10px 10px 0 10px;
   padding: 10px 5px 0 5px;
@@ -243,19 +245,21 @@
   }
 
   .formularUnder {
-    margin-top: 165px;
+    margin-top: 265px;
   }
 
   .decoration {
     width: calc(100% - 10px);
+    height: 253px;
     left: 5px;
     right: 5px;
   }
 
   .decoration > .picturesGrid {
+    padding-top: 5px;
     top: 5px;
-    height: 155px;
     overflow: hidden;
+    transform: translateX(-50%);
   }
 
   .decoration > .revealMsg {
