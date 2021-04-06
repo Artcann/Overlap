@@ -24,6 +24,7 @@
 .container.reveal {
   flex-direction: row;
   height: 100%;
+  padding: 10px;
 }
 
 .decoration {
@@ -186,6 +187,7 @@
 
 .revealImage {
   position: absolute;
+  background-color: #FF1E00;
   width: 100%;
   height: 100%;
   object-fit: cover;

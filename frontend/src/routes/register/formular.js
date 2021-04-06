@@ -38,7 +38,6 @@ const Formular = ({ setCharacter }) => {
     setIsLoading(false)
   };
 
-  console.log(error)
   if (error)
     return (
       <div class={[style.content, style.formularBackPath, style.formularUnder].join(' ')}>
