@@ -5,7 +5,35 @@
       "title": "T'es qui toi ?",
       "pseudo": "Ton pseudo",
       "email": "Ton email @eleve.isep.fr",
-      "password": "Ton mot de passe"
+      "password": "Ton mot de passe",
+      "emailCheckMessage": "Check tes mails pour valider ton inscription"
+    },
+    "error": {
+      "userNotFound": "L'uitiliateur n'a pas été trouvé",
+      "invalidPassword": "Vous avez entré le mauvais mot de passe",
+      "default": "Une erreur s'est produite",
+      "refresh": "Veuillez recharger la page"
+    },
+    "connection": {
+      "connecting": "Connexion...",
+      "initializing": "Chargement de vos données",
+      "loading": "Loading..."
+    },
+    "menu": {
+      "game": "Jeu",
+      "ranking": "Classement",
+      "profil": "Mes informations",
+      "terms": "Conditions d'utilisation",
+      "data_management": "Gestion des données",
+      "disconnect": "Se déconnecter"
+    },
+    "dayIntroduction": {
+      "button": "Commencer le questionnaire",
+      "theme": {
+        "batman": "Ferez-vous la loi ?",
+        "scream": "Entrez, nayez pas peur...",
+        "sherlock": "Élémentaire mon cher..."
+      }
     }
   }
 }

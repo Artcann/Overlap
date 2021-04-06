@@ -5,7 +5,35 @@
       "title": "Who are you?",
       "pseudo": "Your nickname",
       "email": "Your email @eleve.isep.fr",
-      "password": "Your password"
+      "password": "Your password",
+      "emailCheckMessage": "Check your mail to validate your registration"
+    },
+    "error": {
+      "userNotFound": "The user was not found",
+      "invalidPassword": "The password is not correct",
+      "default": "An error has occured",
+      "refresh": "Please refresh"
+    },
+    "connection": {
+      "connecting": "Connection...",
+      "initializing": "Loading your informations",
+      "loading": "Loading..."
+    },
+    "menu": {
+      "game": "Game",
+      "ranking": "Ranking",
+      "profil": "My informations",
+      "terms": "Terms of use",
+      "data_management": "Data management",
+      "disconnect": "Disconnect"
+    },
+    "dayIntroduction": {
+      "button": "Start the quiz",
+      "theme": {
+        "batman": "Will you do the law?",
+        "scream": "Come in, don't be scared...",
+        "sherlock": "Elementary my dear..."
+      }
     }
   }
 }

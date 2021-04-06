@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    expose:
+      - 80
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules # Avoid mixing files
+    environment: 
+      - PORT=80
+      - NODE_ENV=production
+
+  front:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    expose:
+      - 80
+    volumes:
+      - ./frontend:/usr/src/app
+      - /usr/src/app/node_modules # Avoid mixing files
+      - /usr/src/app/build
+    environment: 
+      - NODE_ENV=production
