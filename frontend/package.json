@@ -17,7 +17,6 @@
     ]
   },
   "devDependencies": {
-    "dotenv-safe": "^8.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-preact-pure": "^2.0.0",
     "eslint": "^6.0.1",
@@ -25,7 +24,6 @@
     "jest": "^24.9.0",
     "jest-preset-preact": "^1.0.0",
     "preact-cli": "^3.0.0",
-    "preact-cli-plugin-env-vars": "^1.2.1",
     "sirv-cli": "1.0.3"
   },
   "dependencies": {

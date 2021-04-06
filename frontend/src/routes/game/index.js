@@ -4,7 +4,7 @@ import Match from 'preact-router/match';
 import style from './style.css';
 import Quiz from './quiz';
 import Menu from './menu';
-import Ranking from './Ranking';
+import Ranking from './ranking';
 import DayIntroduction from './day_introduction';
 
 import { useApi } from '../../api';

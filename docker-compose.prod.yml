@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  api:
+    networks:
+      - "traefik"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.overlap-api-secure.rule=Host(`apioverlap.ponsaille.com`)"
+      - "traefik.http.routers.overlap-api-secure.entrypoints=websecure"
+      - "traefik.http.routers.overlap-api-secure.tls.certresolver=myhttpchallenge"
+      # https redirection
+      - "traefik.http.middlewares.redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.overlap-api.rule=Host(`apioverlap.ponsaille.com`)"
+      - "traefik.http.routers.overlap-api.entrypoints=web"
+      - "traefik.http.routers.overlap-api.middlewares=redirect"
+
+  front:
+    networks:
+      - "traefik"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.overlap-api-secure.rule=Host(`overlap.ponsaille.com`)"
+      - "traefik.http.routers.overlap-api-secure.entrypoints=websecure"
+      - "traefik.http.routers.overlap-api-secure.tls.certresolver=myhttpchallenge"
+      # https redirection
+      - "traefik.http.middlewares.redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.overlap-api.rule=Host(`overlap.ponsaille.com`)"
+      - "traefik.http.routers.overlap-api.entrypoints=web"
+      - "traefik.http.routers.overlap-api.middlewares=redirect"
+
+networks:
+  traefik:
+    external: true
