@@ -41,7 +41,7 @@ const getCharacter = async (userResponses) => {
     for(individualResponses of overlapResponses) {
         score = 0;
         for(i = 0; i < individualResponses.question_points.length; i++) {
-            if(userResponses[i] === individualResponses.question_points[i]) {
+            if(userResponses[i] == (individualResponses.question_points[i] - 1)) {
                 score += 1;
             }
         }
@@ -49,6 +49,7 @@ const getCharacter = async (userResponses) => {
         if((score === character[0] && Math.random() < 0.5) || score>character[0]) {
             character = [score, individualResponses.name]
         }
+        console.log(character);
     }
 
     const characterUser = await Character.findOne({name: character[1]});
@@ -64,6 +65,8 @@ exports.signup = async (req, res, next) => {
 
         const character = await getCharacter(req.body);
         character.question_points = null;
+        console.log(character);
+        console.log(req.body);
 
         const newUser = new User({
             pseudo: req.body.pseudo,
