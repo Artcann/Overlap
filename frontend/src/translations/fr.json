@@ -34,6 +34,10 @@
         "scream": "Entrez, nayez pas peur...",
         "sherlock": "Élémentaire mon cher..."
       }
+    },
+    "dayEnd": {
+      "title": "Tu t'en es bien sortit pour aujourd'hui.",
+      "subtitle": "En attendant demain :"
     }
   }
 }

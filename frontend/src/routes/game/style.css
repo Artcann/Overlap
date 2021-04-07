@@ -171,3 +171,16 @@
 .gameButton.invalid {
   background-color: #E62F1F;
 }
+
+.endDay h1 {
+  font-size: 1.5em;
+}
+
+.endDay h2 {
+  font-size: 1.2em;
+}
+
+.endDay .socialMedias img {
+  width: 50px;
+  margin: 13px;
+}

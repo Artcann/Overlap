@@ -34,6 +34,10 @@
         "scream": "Come in, don't be scared...",
         "sherlock": "Elementary my dear..."
       }
+    },
+    "dayEnd": {
+      "title": "You did great for today.",
+      "subtitle": "While waiting tomorrow:"
     }
   }
 }
