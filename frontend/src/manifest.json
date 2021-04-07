@@ -1,11 +1,11 @@
 {
-  "name": "super-overlap-quiz",
-  "short_name": "super-overlap-quiz",
+  "name": "Super Overlap Quiz",
+  "short_name": "Overlap",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fff",
-  "theme_color": "#673ab8",
+  "background_color": "#ff1e00",
+  "theme_color": "#ff1e00",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",
