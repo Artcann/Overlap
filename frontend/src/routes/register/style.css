@@ -176,9 +176,10 @@
 }
 
 .submit {
-  background: none;
+  background: #eeef89;
+  border: 3px solid black;
+  border-radius: 10px;
 	font-size: 1.4em;
-  border: none;
 	height: 100%;
 	color: #FF1E00;
 	text-decoration: none;
