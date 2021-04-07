@@ -2,6 +2,7 @@
   background-color: #B11500;
 	height: 100%;
 	width: 100%;
+  overflow: hidden;
 }
 
 .portal {
@@ -56,6 +57,7 @@
 .cta {
   position: relative;
   background-color: #EEEF89;
+  min-height: 205px;
 }
 
 .cta > .logo {
@@ -70,6 +72,8 @@
 }
 
 .cta > .links {
+  position: relative;
+  z-index:3;
   width: 100%;
   height: 100%;
   display: flex;
