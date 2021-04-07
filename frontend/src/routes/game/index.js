@@ -32,9 +32,6 @@ const Game = () => {
     if (!user)
       route('/', true);
   }
-
-  console.log(userInfo)
-
   return (
     <div class={style.game}>
       <div 

@@ -62,7 +62,7 @@ export const post = async (path, body, config={}, jwt=null) => {
   return await api(path, options, jwt)
 }
 
-export const useApi = (action, args) => {
+export const useApi = (action, args=[]) => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,7 +73,6 @@ export const useApi = (action, args) => {
       try {
         setResult(await action(...args))
       } catch (e) {
-        console.log(e)
         setError(e)
       } finally {
         setIsLoading(false)
