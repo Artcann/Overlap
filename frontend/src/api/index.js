@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
-// TODO: edit check prod or dev
-const url = "http://localhost:3000/api"
+import config from '../../config';
+
+const url = config.domains.api
 
 const api = async (path, config={}, jwt=null) => {
   const headers = {

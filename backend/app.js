@@ -27,9 +27,9 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/auth', authRoutes);
-app.use('/api/question', questionRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/game', gameRoutes)
+app.use('/auth', authRoutes);
+app.use('/question', questionRoutes);
+app.use('/user', userRoutes);
+app.use('/game', gameRoutes)
 
 module.exports = app;

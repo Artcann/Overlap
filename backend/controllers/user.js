@@ -1,8 +1,9 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const { nanoid } = require('nanoid');
+const config = require('../config');
 
 const User = require('../models/User');
 const Character = require('../models/Character');
@@ -12,13 +13,13 @@ const sendMail = (email, body) => {
         service: "gmail",
         auth: {
             type: "login",
-            user: "overlap.noreply@gmail.com",
-            pass: process.env.GMAIL_PASS
+            user: config.mail.email,
+            pass: config.mail.pass
         }
     });
 
     const mailOptions = {
-        from: process.env.GMAIL_MAIL,
+        from: config.mail.email,
         to: email,
         subject: "Testing email Verification",
         html: body
@@ -74,10 +75,16 @@ exports.signup = async (req, res, next) => {
         });
         let user = await newUser.save();
 
+        // TODO: handle mail not sent !
         res.status(200).json({message: 'Utilisateur créé !', character});
         
-        const body = "<h1>Valide ton profil en cliquant sur ce lien !</h1><br><a href=http://localhost:3000/api/auth/verif/" + user._id +
-        ">Vérifier mon profil</a>";
+        const body =
+          `
+            <div>
+              <h1>Valide ton profil en cliquant sur ce lien !</h1><br>
+              <a href="${config.domains.api}/auth/verif/${user._id}">Vérifier mon profil</a>
+            </div>
+          `;
 
         sendMail(req.body.email, body);
 
@@ -138,9 +145,7 @@ exports.verif = async (req, res, next) => {
                 verif: true,
             });
 
-            res.status(200).json({
-                message: "User verified!"
-            });
+            res.redirect(`${config.domains.front}/login?verif=true`);
     } catch (err) {
         res.status(500).send(err);
     }
@@ -175,8 +180,14 @@ exports.sendPassEmail = async (req, res, next) => {
         if(await User.find({ email: req.body.email }).count() !== 0) {
             const token = nanoid();
 
-            const body = "<h1>Reset ton mot de passe !</h1><br><a href=http://localhost:3000/api/auth/reset-pass/" + token +
-            ">Reset mon mot de passe</a>"
+            const body = `
+              <div>
+                <h1>Reset ton mot de passe !</h1><br>
+                <a
+                  href="${config.domains.api}/auth/reset-pass/${token}"
+                >Reset mon mot de passe</a>
+              </div>
+            `
 
             sendMail(req.body.email, body);
 

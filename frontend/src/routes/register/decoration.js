@@ -18,19 +18,20 @@ const Decoration = ({ isReveal }) => {
 
   return (
     <div class={decorationClass}>
-      <div class={style.picturesGrid}>
-        {characters.map(character =>
-          (
-            <figure>
-              <img alt={character.name} src={character.image} />
-            </figure>
-          )
-        )}
-      </div>
-      {isReveal &&
+      {isReveal ?
         <h2 class={style.revealMsg}>
           Check tes mails pour valider ton inscription !
         </h2>
+        :
+        <div class={style.picturesGrid}>
+          {characters.map(character =>
+            (
+              <figure>
+                <img alt={character.name} src={character.image} />
+              </figure>
+            )
+          )}
+        </div>
       }
     </div>
   )

@@ -6,7 +6,8 @@
       "pseudo": "Your nickname",
       "email": "Your email @eleve.isep.fr",
       "password": "Your password",
-      "emailCheckMessage": "Check your mail to validate your registration"
+      "emailCheckMessage": "Check your mail to validate your registration",
+      "startButton":  "Start the adventure !"
     },
     "error": {
       "userNotFound": "The user was not found",
