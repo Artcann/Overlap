@@ -1,14 +1,9 @@
 import { h } from 'preact';
 import style from './style.css';
 
-const characters = [];
+import charactersJSON from '../../characters.json';
+const characters = [...charactersJSON, ...charactersJSON]
 
-for (let i = 0; i < 20; i++) {
-  characters.push({
-    name: "Jérémy",
-    image: "/assets/profile_pics/square/jeremy.jpg"
-  })
-}
 
 const Decoration = ({ isReveal }) => {
   const decorationClass =
@@ -27,7 +22,7 @@ const Decoration = ({ isReveal }) => {
           {characters.map(character =>
             (
               <figure>
-                <img alt={character.name} src={character.image} />
+                <img alt={character.name} src={`/assets/profile_pics/square/${character.identifier}.jpg`} />
               </figure>
             )
           )}

@@ -33,6 +33,8 @@ const Game = () => {
       route('/', true);
   }
 
+  console.log(userInfo)
+
   return (
     <div class={style.game}>
       <div 
@@ -44,8 +46,11 @@ const Game = () => {
         <div class={style.darkener}></div>
         <div class={style.menu}>
           <div class={style.profile}>
-            <img class={style.profilePic} alt="Picture of your character" src="/assets/profile_pics/square/jeremy.jpg" />
-            {day &&
+            {
+              userInfo &&
+              <img class={style.profilePic} alt="Picture of your character" src={`/assets/profile_pics/square/${userInfo.personnage.identifier}.jpg`} />
+            }
+            {(day && day.theme != "notStarted") &&
               <img class={style.profileOverlay} alt="Overlay" src={`/assets/theme/${day.theme}/overlay.svg`} />
             }
           </div>

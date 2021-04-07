@@ -26,17 +26,17 @@ const Register = () => {
               </div>
             );
           }
-
+          
           if (character)
             return (
               <div class={[style.register, style.reveal].join(' ')}>
                 <div class={[style.container, style.reveal].join(' ')}>
                   <div class={[style.content, style.reveal].join(' ')}>
-                    <img class={style.revealImage} alt='Jérémy' src='/assets/profile_pics/vertical/jeremy.jpg' />
+                    <img class={style.revealImage} alt={character.name} src={`/assets/profile_pics/vertical/${character.identifier}.jpg`} />
                     <h1>{character.name}</h1>
                     <img class={style.ready} alt='Ready to fight' src='/assets/ready-to-fight.png' />
                     <div class={style.revealText}>
-                      <p>{"Jérémy cest notre respo com'. Si tu t'aventure dans une conversation avec lui, fait attention à toi. À coup de #hashtags il serait cable de tout te vendre (des tapis fluorescents une tondeuse à parquet ou plus difficile encore: l'autre liste)."}</p>
+                      <p>{character.description[language]}</p>
                       <h2>{translations.userInfos.emailCheckMessage}</h2>
                     </div>
                   </div>

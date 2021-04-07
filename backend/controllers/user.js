@@ -162,6 +162,7 @@ exports.getUser = async (req, res, next) => {
           pseudo: user.pseudo,
           email: user.email,
           score: user.score,
+          personnage: user.personnage,
           tokenExp: decodedToken.exp,
           _id: user._id
         });

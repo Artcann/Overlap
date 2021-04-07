@@ -10,14 +10,9 @@ import { useContext } from 'preact/hooks';
 import { LanguageContext } from '../../translations';
 import { AuthContext } from '../../contexts/auth';
 
-const characters = [];
+import charactersJSON from '../../characters.json';
 
-for (let i = 0; i < 14; i++) {
-  characters.push({
-    name: "Jérémy",
-    image: "/assets/profile_pics/vertical/jeremy.jpg"
-  })
-}
+const characters = [...charactersJSON, ...charactersJSON]
 
 const Image = () => (
   <img class={style.logo} alt="Super Overlap Quiz" src="/assets/super_overlap.svg" />
@@ -82,7 +77,7 @@ const Home = () => (
           (character, index) => {
             if (index < 7) {
               return (
-                <img alt={character.name} src={character.image} />
+                <img alt={character.name} src={`/assets/profile_pics/vertical/${character.identifier}.jpg`} />
               )
             }
           })
@@ -103,7 +98,7 @@ const Home = () => (
           (character, index) => {
             if (index >= 7) {
               return (
-                <img alt={character.name} src={character.image} />
+                <img alt={character.name} src={`/assets/profile_pics/vertical/${character.identifier}.jpg`} />
               )
             }
           })
