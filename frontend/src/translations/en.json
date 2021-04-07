@@ -39,6 +39,10 @@
     "dayEnd": {
       "title": "You did great for today.",
       "subtitle": "While waiting tomorrow:"
+    },
+    "notStarted": {
+      "title": "The game starts tommorrow!",
+      "subtitle": "You can start searching the secret or follow us there:"
     }
   }
 }

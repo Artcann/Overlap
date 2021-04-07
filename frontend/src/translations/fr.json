@@ -39,6 +39,10 @@
     "dayEnd": {
       "title": "Tu t'en es bien sortit pour aujourd'hui.",
       "subtitle": "En attendant demain :"
+    },
+    "notStarted": {
+      "title": "Le jeu commence demain !",
+      "subtitle": "Tu peux commencer à chercher le secret ou nous suivre là :"
     }
   }
 }

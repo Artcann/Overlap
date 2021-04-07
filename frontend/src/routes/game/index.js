@@ -11,9 +11,10 @@ import GameEnd from './game_end';
 import { useApi } from '../../api';
 import { day as getDay } from '../../api/game';
 
-import { useContext } from 'preact/hooks';
+import { useContext, useEffect } from 'preact/hooks';
 import { AuthContext } from '../../contexts/auth';
 import { LanguageContext } from '../../translations';
+import NotStarted from './game_end';
 
 const Game = () => {
   const { isLoading, initializing, user, userInfo, isTokenValid, clearAuth } = useContext(AuthContext);
@@ -47,7 +48,6 @@ const Game = () => {
             {day &&
               <img class={style.profileOverlay} alt="Overlay" src={`/assets/theme/${day.theme}/overlay.svg`} />
             }
-            {/* TODO: Add the overlay */}
           </div>
           <div class={style.menuText}>
             {userInfo && <span class={style.point}>{userInfo.score} points</span>}
@@ -71,6 +71,7 @@ const Game = () => {
             <Ranking path="/game/ranking" />
             <Quiz path="/game/quiz" />
             <GameEnd path="/game/end_day" />
+            <NotStarted path="/game/not_started" />
             <DayIntroduction day={day} path="/game" />
           </Router>)
         }

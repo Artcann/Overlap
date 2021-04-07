@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useContext } from 'preact/hooks';
+import { useContext, useEffect } from 'preact/hooks';
 import { route } from 'preact-router';
 import style from'./style.css';
 
@@ -8,6 +8,9 @@ import { LanguageContext } from '../../translations';
 
 const DayIntroduction = ({ day }) => {
   const { translations } = useContext(LanguageContext);
+
+  if (day && day.theme == "notStarted")
+    route('/game/not_started')
   
   if (day)
     return (

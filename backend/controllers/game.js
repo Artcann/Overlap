@@ -20,7 +20,14 @@ exports.getRanking = async (req, res, next) => {
 
 exports.getDay = async (req, res, next) => {
     try {
-        const infos = await Day.getDay();
+        let infos = await Day.getDay();
+
+        if (!infos) {
+            infos = {
+                _id: null,
+                theme: "notStarted"
+            }
+        }
 
         res.status(200).json({
           _id: infos._id,
