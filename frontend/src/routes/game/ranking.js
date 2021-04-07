@@ -23,7 +23,7 @@ const Ranking = () => {
   if (users)
     return (
       <div class={style.ranking}>
-        {users.map((user, index) => <p>#{index} - {user.pseudo} ({user.score}pts)</p>)}
+        {users.map((user, index) => <p>#{index+1} - {user.pseudo} ({user.score}pts)</p>)}
       </div>
     )
 };
