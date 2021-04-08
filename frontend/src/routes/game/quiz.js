@@ -3,9 +3,12 @@ import { useState, useEffect, useRef, useContext } from 'preact/hooks';
 import { route } from 'preact-router';
 import socketIOClient from 'socket.io-client';
 import style from'./style.css';
+import config from '../../../config';
 
 import { AuthContext } from '../../contexts/auth'
 import { LanguageContext } from '../../translations';
+
+const url = config.domains.api
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -24,7 +27,7 @@ const Quiz = () => {
 
 
   useEffect(() => {
-    socketRef.current = socketIOClient('http://localhost:3000', {
+    socketRef.current = socketIOClient(url, {
       extraHeaders: { Authorization: `Bearer ${user.token}` },
       reconnection: true
     })
@@ -54,14 +57,14 @@ const Quiz = () => {
       route('/game/end_day')
     })
 
-    socketRef.current.on('correction', ({answer, points}) => {
+    socketRef.current.on('correction', ({answer, ours, points}) => {
       setAnswer({
-        ...answerGlobal,
+        ours,
         correct: answer,
         points
       });
       incrementScore(points)
-      setTimeout(() => socketRef.current.emit('nextQuestion'), 5_000)
+      setTimeout(() => socketRef.current.emit('nextQuestion'), 3_000)
     })
   })
 
@@ -92,7 +95,7 @@ const Quiz = () => {
             const classNames = [style.gameButton]
             let text = answer
 
-            if (answerGlobal && answerGlobal.correct) {
+            if (answerGlobal && (answerGlobal.correct || answerGlobal.correct === 0)) {
               if (index == answerGlobal.correct) {
                 classNames.push(style.valid)
                 text += ' +' + answerGlobal.points

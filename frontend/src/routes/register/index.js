@@ -11,6 +11,12 @@ const Register = () => {
   const { language, translations } = useContext(LanguageContext);
 
   const [character, setCharacter] = useState(null);
+  /*let setCharacter = undefined
+  let character = {
+    identifier: 'marjorie',
+    description: 'yolo',
+    name: 'Marjorie'
+  }*/
 
   return (
     <Match path="/start/reveal">

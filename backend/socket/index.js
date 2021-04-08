@@ -57,7 +57,6 @@ exports.socket = (io) => {
     })
 
     socket.on('nextQuestion', async () => {
-      console.log('next')
       const day = await Day.getDay();
       const progression = (await User.findOne({_id: socket.decoded_token.userId})).progression;
       let questions = progression[day._id]
@@ -92,6 +91,7 @@ exports.socket = (io) => {
     })
 
     socket.on("submitAnswer", async ({ answer, question }) => {
+      console.log(answer)
       const day = await Day.getDay();
       const user = await User.findOne({_id: socket.decoded_token.userId})
       const progression = user.progression;
@@ -99,7 +99,6 @@ exports.socket = (io) => {
 
       for (let i = 0; i < questions.length; i++) {
         if (question.id == questions[i].id) {
-          console.log(questions[i].answer)
           if (questions[i].answer || questions[i].answer === 0) {
             socket.emit('error')
             break
@@ -125,7 +124,11 @@ exports.socket = (io) => {
             }
           );
 
-          socket.emit("correction", {answer: questions[i].answer, points});
+          console.log(questions[i])
+          console.log(questions[i].answer)
+          console.log(points)
+
+          socket.emit("correction", {answer: questions[i].correct, ours: questions[i].answer, points});
           break
         }
       }
