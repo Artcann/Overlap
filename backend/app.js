@@ -20,6 +20,8 @@ mongoose.connect(process.env.URI_MONGO,
 
 const app = express();
 
+// CORS Handling
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -27,14 +29,23 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 let accessLogStream = rfs.createStream("access.log", {
   interval: '1d',
   path: path.join(__dirname, 'log')
 })
 
+function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.send({error: "DEFAULT_ERROR", message: "Une erreur innatendue s'est produite"});
+}
+
+// Middleware
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('combined', { stream: accessLogStream }));
 
 

@@ -98,8 +98,7 @@ exports.signup = async (req, res, next) => {
 
 
     } catch (err) {
-        console.error(err)
-        res.status(500).send(err);
+        next(err);
     }
 
 };
@@ -139,7 +138,7 @@ exports.login = async (req, res, next) => {
             )
         });
     } catch (err) {
-        res.status(500).send(err);
+        next(err);
     }
 };
 
@@ -175,8 +174,7 @@ exports.getUser = async (req, res, next) => {
           _id: user._id
         });
     } catch (err) {
-        console.error(err)
-        res.status(500).send(err);
+        next(err);
     }
 };
 
@@ -212,7 +210,7 @@ exports.sendPassEmail = async (req, res, next) => {
             res.status(500).json({message: "Email inconnu"});
         }
     } catch (e) {
-        res.status(500).send(e);
+        next(err);
     }
 }
 
