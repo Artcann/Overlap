@@ -1,5 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
+const path = require('path');
+const rfs = require("rotating-file-stream");
 require('dotenv').config({path: __dirname + '/.env'});
 
 const questionRoutes = require('./routes/question');
@@ -26,6 +29,14 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+let accessLogStream = rfs.createStream("access.log", {
+  interval: '1d',
+  path: path.join(__dirname, 'log')
+})
+
+app.use(morgan('combined', { stream: accessLogStream }));
+
 
 app.use('/auth', authRoutes);
 app.use('/question', questionRoutes);

@@ -49,7 +49,6 @@ const getCharacter = async (userResponses) => {
         if((score === character[0] && Math.random() < 0.5) || score>character[0]) {
             character = [score, individualResponses.name]
         }
-        console.log(character);
     }
 
     const characterUser = await Character.findOne({name: character[1]});
@@ -65,8 +64,14 @@ exports.signup = async (req, res, next) => {
 
         const character = await getCharacter(req.body);
         character.question_points = null;
-        console.log(character);
-        console.log(req.body);
+
+        const pseudoMailTest = await User.find({ $or: [{pseudo: req.body.pseudo}, {email: req.body.email}]}, {"_id" : 1});
+        if(pseudoMailTest.length > 0) {
+            return res.status(500).json({
+                error: 'Utilisateur déjà existant !',
+                type: 'USER_ALREADY_EXIST'
+            });
+        }
 
         const newUser = new User({
             pseudo: req.body.pseudo,
@@ -82,12 +87,12 @@ exports.signup = async (req, res, next) => {
         res.status(200).json({message: 'Utilisateur créé !', character});
         
         const body =
-          `
-            <div>
-              <h1>Valide ton profil en cliquant sur ce lien !</h1><br>
-              <a href="${config.domains.api}/auth/verif/${user._id}">Vérifier mon profil</a>
-            </div>
-          `;
+            `
+                <div>
+                    <h1>Valide ton profil en cliquant sur ce lien !</h1><br>
+                    <a href="${config.domains.api}/auth/verif/${user._id}">Vérifier mon profil</a>
+                </div>
+            `;
 
         sendMail(req.body.email, body);
 

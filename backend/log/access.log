@@ -1,0 +1,2 @@
+::1 - - [08/Apr/2021:11:54:21 +0000] "OPTIONS /auth/signup HTTP/1.1" 200 4 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
+::1 - - [08/Apr/2021:11:54:21 +0000] "POST /auth/signup HTTP/1.1" 500 69 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
