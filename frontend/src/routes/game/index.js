@@ -55,7 +55,7 @@ const Game = () => {
             {userInfo && <span class={style.point}>{userInfo.score} points</span>}
             <Match path="/game/menu">
               { ({ matches }) => matches ? 
-                <a href="javascript:history.back()">X</a>
+                <a href="javascript:history.back()">Retour</a>
                 :
                 <a href="/game/menu">Menu</a>
               }
