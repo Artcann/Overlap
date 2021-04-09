@@ -148,6 +148,14 @@
   width: 100%;
   max-width: 230px;
   text-align: left;
+  transform: translateY(50%);
+  transform: translateY(calc(50% - 250px));
+}
+
+@media (max-height: 700px) {
+  .ranking {
+    transform: translateY(calc(50% - 30vh));
+  }
 }
 
 .ranking p {
@@ -167,10 +175,10 @@
   text-decoration: none;
 }
 
-/*.gameButton:focus {
+.gameButton:focus {
   outline: none;
   background-color: rgba(255, 255, 255, 0.3);
-} */
+} 
 
 .gameButton.valid {
   background-color: #4EAE33;
