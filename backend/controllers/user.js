@@ -82,16 +82,14 @@ exports.signup = async (req, res, next) => {
         res.status(200).json({message: 'Utilisateur créé !', character});
         
         const body =
-          `
-            <div>
-              <h1>Valide ton profil en cliquant sur ce lien !</h1><br>
-              <a href="${config.domains.api}/auth/verif/${user._id}">Vérifier mon profil</a>
-            </div>
-          `;
+            `
+                <div>
+                    <h1>Valide ton profil en cliquant sur ce lien !</h1><br>
+                    <a href="${config.domains.api}/auth/verif/${user._id}">Vérifier mon profil</a>
+                </div>
+            `;
 
         sendMail(req.body.email, body);
-
-
     } catch (err) {
         console.error(err)
         res.status(500).send(err);
