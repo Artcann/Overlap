@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const morgan = require('morgan');
+const path = require('path');
+const rfs = require("rotating-file-stream");
 require('dotenv').config({path: __dirname + '/.env'});
 
 const questionRoutes = require('./routes/question');
@@ -18,6 +21,8 @@ mongoose.connect(process.env.URI_MONGO,
 
 const app = express();
 
+// CORS Handling
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -25,11 +30,27 @@ app.use((req, res, next) => {
     next();
 });
 
+let accessLogStream = rfs.createStream("access.log", {
+  interval: '1d',
+  path: path.join(__dirname, 'log')
+})
+
+function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.send({error: "DEFAULT_ERROR", message: "Une erreur innatendue s'est produite"});
+}
+
+// Middleware
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 
 app.disable('x-powered-by');
+app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use('/auth', authRoutes);
 app.use('/question', questionRoutes);
