@@ -188,11 +188,36 @@
   text-shadow: 2px 2px 0px white;
 }
 
-.revealImage {
+.content.reveal {
   position: absolute;
+  left: 5px;
+  top: 5px;
+  bottom: 5px;
   background-color: #FF1E00;
-  width: 100%;
-  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+}
+
+.content.reveal::-webkit-scrollbar {
+  width: 7px;
+}
+
+.content.reveal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content.reveal::-webkit-scrollbar-thumb {
+  background: black;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  border: 3px solid black;
+  border: 3px solid rgba(0, 0, 0, 0.5);
+}
+
+.revealImage {
+  position: fixed;
+  width: inherit;
   object-fit: cover;
   padding: 20px;
 }
@@ -200,8 +225,8 @@
 .content.reveal h1 {
   text-align: center;
   padding: 5px 25px;
-  width: 100%;
-  position: absolute;
+  width: inherit;
+  position: fixed;
   top: 0;
   font-size: 2em;
   font-weight: 900;
@@ -213,24 +238,36 @@
   position: absolute;
   width: 100%;
   opacity: 80%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 10px;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+}
+
+.content.reveal .square {
+  width: 100%;
+}
+
+.content.reveal .square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 
 .content.reveal .revealText {
+  position: relative;
   width: 100%;
   padding: 5px 25px;
-  position: absolute;
   text-align: center;
-  bottom: 15px;
+  background-color: #FF1E00;
 }
 
 .content.reveal .revealText h2 {
   display: none;
-  color: #FF1E00;
+  color: white;
   font-size: 1.5em;
   font-weight: 800;
-  text-shadow: 2px 2px 0px white;
+  text-shadow: 2px 2px 0px black;
 }
 
 .content.reveal .revealText p {
@@ -282,5 +319,10 @@
 
   .content.reveal .revealText h2 {
     display: block;
+  }
+
+  .content.reveal {
+    right: 5px;
+    width: calc(100% - 10px);
   }
 }
