@@ -190,6 +190,9 @@
 
 .content.reveal {
   position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   left: 5px;
   top: 5px;
   bottom: 5px;
@@ -215,11 +218,16 @@
   border: 3px solid rgba(0, 0, 0, 0.5);
 }
 
-.revealImage {
+.revealImagesContainer {
+  align-self: flex-start;
   position: fixed;
   width: inherit;
   object-fit: cover;
   padding: 20px;
+}
+
+.revealImage {
+  width: 100%;
 }
 
 .content.reveal h1 {
@@ -234,18 +242,20 @@
   text-shadow: 3px 3px 0px #0FCD25;
 }
 
-.content.reveal .ready {
-  position: absolute;
+.content.reveal .square {
+  align-self: flex-start;
+  position: relative;
   width: 100%;
-  opacity: 80%;
-  top: 10px;
-  left: 0;
-  right: 0;
-  transform: translateY(-100%);
+  z-index: 10;
 }
 
-.content.reveal .square {
-  width: 100%;
+.content.reveal .ready {
+  position: absolute;
+  width: inherit;
+  opacity: 80%;
+  left: 50%;
+  bottom: -3px;
+  transform: translateX(-50%);
 }
 
 .content.reveal .square:after {
