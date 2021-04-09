@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 require('dotenv').config({path: __dirname + '/.env'});
 
 const questionRoutes = require('./routes/question');
@@ -26,6 +27,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(helmet());
+
+app.disable('x-powered-by');
 
 app.use('/auth', authRoutes);
 app.use('/question', questionRoutes);
