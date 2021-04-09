@@ -71,7 +71,7 @@ const Formular = ({ setCharacter }) => {
             <Splitter className={style.splitter} borderSize="4px">
               <h2>{translations.userInfos.title}</h2>
             </Splitter>
-            <TextInput name="email" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+@eleve.isep.fr" required />
+            <TextInput name="email" type="email" register={register} label={translations.userInfos.email.toUpperCase()} pattern=".+\..+@eleve.isep.fr" required />
             <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
           </section>
           {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} required />)}
