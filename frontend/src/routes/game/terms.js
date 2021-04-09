@@ -176,10 +176,6 @@ const Terms = () => {
         • Exercer leur droit d’accès pour connaître les données personnelles les concernant. Dans le cadre d’une telle demande nous vous demanderons d’apporter une justification de votre identité afin d’en vérifier l’exactitude. Demander la mise à jour des informations les concernant<br/>
         • Demander la suppression de leurs données à caractère personnel<br/>
         Pour cela, envoyez un courriel à overlap.noreply@gmail.com
-        <h2>COOKIES</h2>
-        Le site peut collecter automatiquement des informations standard telles que tous types d'informations personnalisées qui permettent au site d'identifier ses visiteurs.<br/>
-        Toutes les informations collectées indirectement ne seront utilisées que pour suivre le volume, le type et la configuration du trafic utilisant ce site, pour en développer la conception et l'agencement et à d'autres fins administratives et de planification et plus généralement pour améliorer le service que nous vous offrons.<br/>
-        Vous avez la possibilité de refuser la présence des cookies sur votre ordinateur. Les cookies proviennent de CloudFlare et de Google Analytics qui sont deux services nous permettant de faire fonctionner correctement le site et de suivre les statistiques de celui-ci.<br/><br/>
       </div>
     )
 };
