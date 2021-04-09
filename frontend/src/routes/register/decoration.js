@@ -1,11 +1,16 @@
 import { h } from 'preact';
 import style from './style.css';
 
+import { useContext } from 'preact/hooks';
+import { LanguageContext } from '../../translations';
+
 import charactersJSON from '../../characters.json';
 const characters = [...charactersJSON, ...charactersJSON]
 
 
 const Decoration = ({ isReveal }) => {
+  const { translations } = useContext(LanguageContext);
+
   const decorationClass =
     isReveal ?
     [style.decoration, style.revealSide].join(' '):
@@ -15,7 +20,7 @@ const Decoration = ({ isReveal }) => {
     <div class={decorationClass}>
       {isReveal ?
         <h2 class={style.revealMsg}>
-          Check tes mails pour valider ton inscription !
+          {translations.userInfos.emailCheckMessage}
         </h2>
         :
         <div class={style.picturesGrid}>
