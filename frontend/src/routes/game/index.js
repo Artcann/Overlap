@@ -7,6 +7,7 @@ import Menu from './menu';
 import Ranking from './ranking';
 import DayIntroduction from './day_introduction';
 import GameEnd from './game_end';
+import Terms from './terms';
 
 import { useApi } from '../../api';
 import { day as getDay } from '../../api/game';
@@ -74,6 +75,7 @@ const Game = () => {
             <Quiz path="/game/quiz" />
             <GameEnd path="/game/end_day" />
             <NotStarted path="/game/not_started" />
+            <Terms path="/game/terms" />
             <DayIntroduction day={day} path="/game" />
           </Router>)
         }
