@@ -132,7 +132,7 @@ const Terms = () => {
         <h1>Mentions l&eacute;gales</h1>
         <h2>EDITEUR</h2>
         Le site web Super Overlap est édité par les membres de l’association de fait OVERLAP<br/>
-        <b>Directeur de publication : Arthur Cann,</b><br/> overlap.noreply@gmail.com
+        <b>Directeur de publication : OVERLAP,</b><br/> overlap.noreply@gmail.com
         <br/><br/>
         <h2>HEBERGEUR</h2>
         Le site Super Overlap est hébergé par la société OVH,  2 rue Kellermann - 59100 Roubaix - France
