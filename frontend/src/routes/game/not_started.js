@@ -10,11 +10,11 @@ const Menu = () => {
 
   return (
     <div class={style.endDay}>
-      <h1>{translations.dayEnd.title}</h1>
-      <h2>{translations.dayEnd.subtitle}</h2>
+      <h1>{translations.notStarted.title}</h1>
+      <h2>{translations.notStarted.subtitle}</h2>
       <div class={style.socialMedias}>
-        <a href="#"><img alt="Instagram" src="/assets/social-medias/instagram.png" /></a>
-        <a href="#"><img alt="Facebook" src="/assets/social-medias/facebook.svg" /></a>
+        <a href="https://www.instagram.com/ponsaille/"><img alt="Instagram" src="/assets/social-medias/instagram.png" /></a>
+        <a href="https://www.facebook.com/arthur.cann.37"><img alt="Facebook" src="/assets/social-medias/facebook.svg" /></a>
         <a href="#"><img alt="Discord" src="/assets/social-medias/discord.svg" /></a>
       </div>
     </div>
