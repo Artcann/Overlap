@@ -4,8 +4,7 @@ import style from './style.css';
 import { useContext } from 'preact/hooks';
 import { LanguageContext } from '../../translations';
 
-import charactersJSON from '../../characters.json';
-const characters = [...charactersJSON, ...charactersJSON]
+import characters from '../../characters.json';
 
 
 const Decoration = ({ isReveal }) => {

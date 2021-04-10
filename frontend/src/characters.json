@@ -4,35 +4,55 @@
     "identifier": "jeremy"
   },
   {
-    "name": "Angèle",
-    "identifier": "angele"
-  },
-  {
-    "name": "Angélique",
-    "identifier": "angelique"
-  },
-  {
-    "name": "Elias",
-    "identifier": "elias"
-  },
-  {
-    "name": "Hugo",
-    "identifier": "hugo"
+    "name": "Thibault",
+    "identifier": "thibault"
   },
   {
     "name": "Maëlle",
     "identifier": "maelle"
   },
   {
-    "name": "Marjorie",
-    "identifier": "marjorie"
-  },
-  {
     "name": "Tanguy",
     "identifier": "tanguy"
   },
   {
-    "name": "Thibault",
-    "identifier": "thibault"
+    "name": "Raphaël",
+    "identifier": "raphael"
+  },
+  {
+    "name": "Come",
+    "identifier": "come"
+  },
+  {
+    "name": "Cyril",
+    "identifier": "cyril"
+  },
+  {
+    "name": "Angélique",
+    "identifier": "angelique"
+  },
+  {
+    "name": "Arthur",
+    "identifier": "arthur"
+  },
+  {
+    "name": "Hugo",
+    "identifier": "hugo"
+  },
+  {
+    "name": "Elie",
+    "identifier": "elie"
+  },
+  {
+    "name": "Elias",
+    "identifier": "elias"
+  },
+  {
+    "name": "Alexandre",
+    "identifier": "alexandre"
+  },
+  {
+    "name": "Marjorie",
+    "identifier": "marjorie"
   }
 ]

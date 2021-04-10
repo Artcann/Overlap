@@ -10,9 +10,7 @@ import { useContext } from 'preact/hooks';
 import { LanguageContext } from '../../translations';
 import { AuthContext } from '../../contexts/auth';
 
-import charactersJSON from '../../characters.json';
-
-const characters = [...charactersJSON, ...charactersJSON]
+import characters from '../../characters.json';
 
 const Image = () => (
   <img class={style.logo} alt="Super Overlap Quiz" src="/assets/super_overlap.svg" />
