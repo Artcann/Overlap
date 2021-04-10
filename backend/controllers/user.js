@@ -1,9 +1,11 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const { nanoid } = require('nanoid');
 const config = require('../config');
+const ValidationError = mongoose.Error.ValidationError;
 
 const User = require('../models/User');
 const Character = require('../models/Character');
@@ -60,18 +62,16 @@ exports.signup = async (req, res, next) => {
     try {
         hash = await bcrypt.hash(req.body.password, 10)
 
-        const domain = req.body.email.substr(-0, 14);
+        const regexMail = new RegExp(".+\\..+@eleve.isep.fr");
+        if(!regexMail.test(req.body.email)) {
+            return res.status(500).json({
+                error: 'Le format du mail est invalide !',
+                type: 'INVALID_EMAIL'
+            })
+        }
 
         const character = await getCharacter(req.body);
         character.question_points = null;
-
-        const pseudoMailTest = await User.find({ $or: [{pseudo: req.body.pseudo}, {email: req.body.email}]}, {"_id" : 1});
-        if(pseudoMailTest.length > 0) {
-            return res.status(500).json({
-                error: 'Utilisateur déjà existant !',
-                type: 'USER_ALREADY_EXIST'
-            });
-        }
 
         const newUser = new User({
             pseudo: req.body.pseudo,
@@ -96,7 +96,14 @@ exports.signup = async (req, res, next) => {
 
         sendMail(req.body.email, body);
     } catch (err) {
-        next(err);
+        if(err instanceof ValidationError) {
+            return res.status(500).json({
+                error: 'Utilisateur déjà existant !',
+                type: 'USER_ALREADY_EXIST'
+            });
+        } else {
+            next(err);
+        } 
     }
 
 };
