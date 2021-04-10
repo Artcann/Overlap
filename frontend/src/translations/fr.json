@@ -10,7 +10,7 @@
       "startButton":  "Commencer l'aventure !"
     },
     "error": {
-      "userNotFound": "L'uitiliateur n'a pas été trouvé",
+      "userNotFound": "L'utilisateur n'a pas été trouvé",
       "invalidPassword": "Vous avez entré le mauvais mot de passe",
       "default": "Une erreur s'est produite",
       "refresh": "Veuillez recharger la page"
@@ -32,12 +32,12 @@
       "button": "Commencer le questionnaire",
       "theme": {
         "batman": "Ferez-vous la loi ?",
-        "scream": "Entrez, nayez pas peur...",
+        "scream": "Entrez, n'ayez pas peur...",
         "sherlock": "Élémentaire mon cher..."
       }
     },
     "dayEnd": {
-      "title": "Tu t'en es bien sortit pour aujourd'hui.",
+      "title": "Tu t'en es bien sorti pour aujourd'hui.",
       "subtitle": "En attendant demain :"
     },
     "notStarted": {
