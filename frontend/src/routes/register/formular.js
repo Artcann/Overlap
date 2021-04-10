@@ -38,7 +38,7 @@ const Formular = ({ setCharacter }) => {
 
   if (error) {
     let errorMessage;
-    
+
     if (error.errorFrom == 'server') {
       switch (error.body.type) {
         case 'USER_ALREADY_EXIST':
@@ -90,6 +90,11 @@ const Formular = ({ setCharacter }) => {
             <TextInput name="password" type="password" register={register} label={translations.userInfos.password.toUpperCase()} required />
           </section>
           {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} required />)}
+          <label style="color: white; font-size: 1.3em; margin-bottom: 10px;">
+            <input type="checkbox" required />
+            J'ai lu et j'accepte les <a href="/game/terms">conditions d'utilisation</a>
+          </label>
+          <p></p>
           <input class={style.submit} type="submit" value={translations.userInfos.startButton} />
         </form>
       </div>

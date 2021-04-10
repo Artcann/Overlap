@@ -23,16 +23,17 @@ const Game = () => {
 
   const [day] = useApi(getDay);
   
-  const handleRoute = async _ => {
-    if (!isTokenValid()) {
+  const handleRoute = async ({ url }) => {
+    if (!isTokenValid() && url != '/game/terms') {
       clearAuth()
       route('/')
       return;
     }
 
-    if (!user)
+    if (!user && url != '/game/terms')
       route('/', true);
   }
+  
   return (
     <div class={style.game}>
       <div 
