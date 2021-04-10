@@ -15,7 +15,8 @@ console.log(`
 /!\\ Safety procedure initiated/!\\ \n
 /!\\Our agent is backing up all/!\\ \n
 /!\\      the pop culture      /!\\ \n
-/!\\  Code: odknpqnh_wp_mYEFT  /!\\ \n
+/!\\       On: bknio.cha       /!\\ \n
+/!\\  Code: dS8NonoJbD9VJoFa6  /!\\ \n
 /!\\ Error /!\\ Error /!\\ Error /!\\ \n
 `)
 
