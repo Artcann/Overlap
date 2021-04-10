@@ -23,9 +23,7 @@ const Formular = ({ setCharacter }) => {
     setIsLoading(true)
 
     try {
-      console.log(data)
       const response = await signup(data)
-      console.log(response)
       
       setCharacter(response.character)
       setIsLoading(false)
@@ -38,14 +36,31 @@ const Formular = ({ setCharacter }) => {
     setIsLoading(false)
   };
 
-  if (error)
+  if (error) {
+    let errorMessage;
+    console.log(error)
+    if (error.errorFrom == 'server') {
+      switch (error.body.type) {
+        case 'USER_ALREADY_EXIST':
+          errorMessage = translations.error.userAlreadyExists
+          break;
+        default:
+          errorMessage = translations.error.default
+          break;
+      }
+    } else {
+      errorMessage = translations.error.default
+    }
+
     return (
       <div class={[style.content, style.formularBackPath, style.formularUnder].join(' ')}>
-        <div class={[style.formularBackPath, style.formularBackground].join(' ')}>
-          <h1>{translations.error.default}</h1>
+        <div class={[style.formularBackPath, style.formularBackground, style.formularError].join(' ')}>
+          <h1>{errorMessage}</h1>
+          <a href="#" onClick={() => { setError(null) }} ><h2>{translations.menu.back}</h2></a>
         </div>
       </div>
     )
+  }
 
   if (isLoading)
     return (
