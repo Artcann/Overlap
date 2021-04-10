@@ -92,7 +92,7 @@ const Formular = ({ setCharacter }) => {
           {questions.map((question, index) => <Question key={index} name={index} register={register} question={question[language]} required />)}
           <label style="color: white; font-size: 1.3em; margin-bottom: 10px;">
             <input type="checkbox" required />
-            J'ai lu et j'accepte les <a href="/game/terms">conditions d'utilisation</a>
+            J'ai lu et j'accepte les <a href="/game/terms" style="color: #B11500;">conditions d'utilisation</a>
           </label>
           <p></p>
           <input class={style.submit} type="submit" value={translations.userInfos.startButton} />
