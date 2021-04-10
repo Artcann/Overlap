@@ -27,7 +27,7 @@ const Decoration = ({ isReveal }) => {
           {characters.map(character =>
             (
               <figure>
-                <img alt={character.name} src={`/assets/profile_pics/square/${character.identifier}.jpg`} />
+                <img alt={character.name} src={`/assets/profile_pics/square_names/${character.identifier}.jpg`} />
               </figure>
             )
           )}
