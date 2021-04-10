@@ -38,7 +38,7 @@ const Formular = ({ setCharacter }) => {
 
   if (error) {
     let errorMessage;
-    console.log(error)
+    
     if (error.errorFrom == 'server') {
       switch (error.body.type) {
         case 'USER_ALREADY_EXIST':

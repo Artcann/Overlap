@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 const { nanoid } = require('nanoid');
 const config = require('../config');
+const email_template = require('../utils/email_template');
 const ValidationError = mongoose.Error.ValidationError;
 
 const User = require('../models/User');
@@ -86,13 +87,16 @@ exports.signup = async (req, res, next) => {
         // TODO: handle mail not sent !
         res.status(200).json({message: 'Utilisateur créé !', character});
         
-        const body =
+        const body = email_template(
             `
-                <div>
+                <div style="text-align: center;">
                     <h1>Valide ton profil en cliquant sur ce lien !</h1><br>
                     <a href="${config.domains.api}/auth/verif/${user._id}">Vérifier mon profil</a>
+                    <h1>Validate your profil using this link !</h1><br>
+                    <a href="${config.domains.api}/auth/verif/${user._id}">Validate your profile</a>
                 </div>
-            `;
+            `
+        );
 
         sendMail(req.body.email, body);
     } catch (err) {
@@ -139,7 +143,7 @@ exports.login = async (req, res, next) => {
             token: jwt.sign(
                 { userId: user._id },
                 process.env.RANDOM_TOKEN_SECRET,
-                { expiresIn: '24h' }
+                { expiresIn: '15d' }
             )
         });
     } catch (err) {
@@ -192,14 +196,16 @@ exports.sendPassEmail = async (req, res, next) => {
         if(await User.find({ email: req.body.email }).count() !== 0) {
             const token = nanoid();
 
-            const body = `
-              <div>
-                <h1>Reset ton mot de passe !</h1><br>
-                <a
-                  href="${config.domains.api}/auth/reset-pass/${token}"
-                >Reset mon mot de passe</a>
-              </div>
-            `
+            const body = email_template(
+                `
+                    <div style="text-align: center;">
+                        <h1>Reset ton mot de passe !</h1><br>
+                        <a
+                        href="${config.domains.api}/auth/reset-pass/${token}"
+                        >Reset mon mot de passe</a>
+                    </div>
+                `
+            );
 
             sendMail(req.body.email, body);
 
