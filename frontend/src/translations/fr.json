@@ -11,6 +11,7 @@
     },
     "error": {
       "userNotFound": "L'uitiliateur n'a pas été trouvé",
+      "userAlreadyExists": "Cet utilisateur existe déjà, vérifiez votre pseudo et email",
       "invalidPassword": "Vous avez entré le mauvais mot de passe",
       "default": "Une erreur s'est produite",
       "refresh": "Veuillez recharger la page"
@@ -26,7 +27,8 @@
       "profil": "Mes informations",
       "terms": "Conditions d'utilisation",
       "data_management": "Gestion des données",
-      "disconnect": "Se déconnecter"
+      "disconnect": "Se déconnecter",
+      "back": "Retour"
     },
     "dayIntroduction": {
       "button": "Commencer le questionnaire",

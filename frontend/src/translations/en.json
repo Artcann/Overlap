@@ -11,6 +11,7 @@
     },
     "error": {
       "userNotFound": "The user was not found",
+      "userAlreadyExists": "This user already exists, please check your nickname and email",
       "invalidPassword": "The password is not correct",
       "default": "An error has occured",
       "refresh": "Please refresh"
@@ -26,7 +27,8 @@
       "profil": "My informations",
       "terms": "Terms of use",
       "data_management": "Data management",
-      "disconnect": "Disconnect"
+      "disconnect": "Disconnect",
+      "back": "Back"
     },
     "dayIntroduction": {
       "button": "Start the quiz",
