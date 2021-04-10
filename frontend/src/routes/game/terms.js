@@ -114,7 +114,7 @@ const Terms = () => {
               <li><p>En cas de diff&eacute;rends entre les parties, celles-ci conviennent de se rencontrer dans les 30 jours de la naissance du diff&eacute;rend, dans un lieu situ&eacute; dans le ressort de la Cour d&rsquo;Appel de PARIS ou d&rsquo;organiser une r&eacute;union &agrave; distance pour &eacute;voquer les difficult&eacute;s rencontr&eacute;es.</p></li>
               <li><p>Au cours de cette r&eacute;union, les parties doivent essayer de trouver une issue amiable &agrave; leur(s) diff&eacute;rend(s).</p></li>
               <li><p>Cette phase de n&eacute;gociations est une obligation contractuelle.</p></li>
-              <li><p>Si dans les 15 jours qui suivent cette rencontre, les parties n&rsquo;ont pu se mettre d&rsquo;accord, elles peuvent alors avoir recours &agrave; une proc&eacute;dure judiciaire. Seules les juridictions du ressort de la Cour d&rsquo;Appel de MONTPELLIER peuvent &ecirc;tre saisies.</p></li>
+              <li><p>Si dans les 15 jours qui suivent cette rencontre, les parties n&rsquo;ont pu se mettre d&rsquo;accord, elles peuvent alors avoir recours &agrave; une proc&eacute;dure judiciaire. Seules les juridictions du ressort de la Cour d&rsquo;Appel de Paris peuvent &ecirc;tre saisies.</p></li>
               <li><p>Aucun proc&egrave;s concernant un diff&eacute;rend li&eacute; directement ou indirectement aux conditions d&rsquo;utilisation ne peut avoir lieu plus d&rsquo;un an apr&egrave;s la naissance de la pr&eacute;tention conform&eacute;ment aux dispositions de l&rsquo;article 2254 du code civil.</p></li>
             </ol>
           </li>
