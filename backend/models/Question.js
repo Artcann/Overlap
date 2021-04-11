@@ -6,7 +6,7 @@ const questionSchema = mongoose.Schema({
     question: { type: Object, required: true},
     answers: { type: Object, required: true},
     correct: { type: Number, required: true},
-    type: { type: String, required: false},
+    source: { type: String, required: false},
     image: { type: String, required: false}
 });
 

@@ -88,7 +88,8 @@ const Quiz = () => {
       <>
         <div class={style.gameQuestion}>
           <h1>{question.question[language]}</h1>
-          <img class={style.gameScreen} src="https://1uyxqn3lzdsa2ytyzj1asxmmmpt-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Lot-189-Keith-Haring-Retrospect-1-768x426.jpg" />
+          {question.image && <img class={style.gameScreen} src={`/assets/images/questions/${question.image}.jpg`} />}
+          {question.source && <p style="margin-top: 0;">© {question.source}</p>}
         </div>
         <div class={style.gameAnswers}>
           {question.answers.map(([index, answer]) => {

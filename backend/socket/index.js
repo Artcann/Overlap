@@ -91,7 +91,6 @@ exports.socket = (io) => {
     })
 
     socket.on("submitAnswer", async ({ answer, question }) => {
-      console.log(answer)
       const day = await Day.getDay();
       const user = await User.findOne({_id: socket.decoded_token.userId})
       const progression = user.progression;
@@ -123,10 +122,6 @@ exports.socket = (io) => {
               progression
             }
           );
-
-          console.log(questions[i])
-          console.log(questions[i].answer)
-          console.log(points)
 
           socket.emit("correction", {answer: questions[i].correct, ours: questions[i].answer, points});
           break
