@@ -8,6 +8,7 @@ import Ranking from './ranking';
 import DayIntroduction from './day_introduction';
 import GameEnd from './game_end';
 import Terms from './terms';
+import Credits from './credits';
 
 import { useApi } from '../../api';
 import { day as getDay } from '../../api/game';
@@ -24,13 +25,16 @@ const Game = () => {
   const [day] = useApi(getDay);
   
   const handleRoute = async ({ url }) => {
-    if (!isTokenValid() && url != '/game/terms') {
+    if (url == '/game/terms' || url == '/game/credits')
+      return;
+
+    if (!isTokenValid()) {
       clearAuth()
       route('/')
       return;
     }
 
-    if (!user && url != '/game/terms')
+    if (!user && (url != '/game/terms' || url != '/game/credits'))
       route('/', true);
   }
   
@@ -77,6 +81,7 @@ const Game = () => {
             <GameEnd path="/game/end_day" />
             <NotStarted path="/game/not_started" />
             <Terms path="/game/terms" />
+            <Credits path="/game/credits" />
             <DayIntroduction day={day} path="/game" />
           </Router>)
         }
