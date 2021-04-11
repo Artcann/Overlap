@@ -55,6 +55,6 @@ app.use(morgan('combined', { stream: accessLogStream }));
 app.use('/auth', authRoutes);
 app.use('/question', questionRoutes);
 app.use('/user', userRoutes);
-app.use('/game', gameRoutes)
+app.use('/game', gameRoutes);
 
 module.exports = app;
