@@ -39,6 +39,10 @@ export function AuthProvider({ children }) {
       setIsLoading(true)
       try {
         const ui = await me(jwt)
+        if (!ui.pseudo && (ui.tokenExp*1000 > Date.now())) {
+          clearAuth()
+          route('/')
+        }
         setUserInfo(ui)
         return ui
       } catch (e) {
