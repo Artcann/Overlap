@@ -16,7 +16,7 @@ import { day as getDay } from '../../api/game';
 import { useContext, useEffect } from 'preact/hooks';
 import { AuthContext } from '../../contexts/auth';
 import { LanguageContext } from '../../translations';
-import NotStarted from './game_end';
+import NotStarted from './not_started';
 
 const Game = () => {
   const { isLoading, initializing, user, userInfo, isTokenValid, clearAuth } = useContext(AuthContext);
