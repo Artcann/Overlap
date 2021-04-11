@@ -13,9 +13,9 @@ const Menu = () => {
       <h1>{translations.notStarted.title}</h1>
       <h2>{translations.notStarted.subtitle}</h2>
       <div class={style.socialMedias}>
-        <a href="https://www.instagram.com/listebdeoverlap/"><img alt="Instagram" src="/assets/social-medias/instagram.png" /></a>
-        <a href="https://www.facebook.com/listebdeoverlap/"><img alt="Facebook" src="/assets/social-medias/facebook.svg" /></a>
-        <a href="https://discord.gg/gk4acy7C "><img alt="Discord" src="/assets/social-medias/discord.svg" /></a>
+        <a href="https://www.instagram.com/listebdeoverlap/"><img alt="Instagram" src="/assets/social-medias/logos/instagram.png" /></a>
+        <a href="https://www.facebook.com/listebdeoverlap/"><img alt="Facebook" src="/assets/social-medias/logos/facebook.svg" /></a>
+        <a href="https://discord.gg/gk4acy7C "><img alt="Discord" src="/assets/social-medias/logos/discord.svg" /></a>
       </div>
     </div>
   )
