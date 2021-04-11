@@ -260,7 +260,6 @@
 .content.reveal .ready {
   position: absolute;
   width: inherit;
-  opacity: 80%;
   left: 50%;
   bottom: -3px;
   transform: translateX(-50%);

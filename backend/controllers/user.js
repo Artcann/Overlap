@@ -24,7 +24,7 @@ const sendMail = (email, body) => {
     const mailOptions = {
         from: config.mail.email,
         to: email,
-        subject: "Testing email Verification",
+        subject: "Super Overlap Quiz",
         html: body
     };
 
