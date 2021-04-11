@@ -5,6 +5,8 @@ import style from'./style.css';
 const Terms = () => {
     return (
       <div style="width:100%; max-width: unset; padding: 10px;" class={style.ranking}>
+        <p>(For legal reasons this document is only available in French)</p>
+
         <h1>Conditions Générales d&#8242;Utilisation</h1>
           
         <p>Super Overlap &ndash; CONDITIONS D&rsquo;UTILISATION</p>

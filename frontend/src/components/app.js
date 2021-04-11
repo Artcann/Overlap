@@ -19,6 +19,10 @@ const App = () => (
         </Router>
       </AuthProvider>
     </LanguageProvider>
+    <div id="bottom_terms">
+      <a href="/game/terms">CGU</a>
+      <a href="/game/credits">Crédits</a>
+    </div>
 	</div>
 )
 
