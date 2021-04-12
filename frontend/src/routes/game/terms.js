@@ -51,7 +51,7 @@ const Terms = () => {
             <p>Le classement sur Super Overlap</p>
             <ol>
               <li><p>Super Overlap fourni un classement provisoir en temps réel.</p></li>
-              <li><p>En ses quallité de classement provisoir celui-ci peut être modifier par l'équipe d'Overlap pour ajouter des points au gagnant d'un défi ou pour prendre en compte un acte de triche</p></li>
+              <li><p>En ses qualit&eacute;s de classement provisoire celui-ci peut être modifi&eacute; par l'équipe d'Overlap pour ajouter des points au gagnant d'un défi ou pour prendre en compte un acte de triche</p></li>
             </ol>
           </li>
           <li>
