@@ -4,7 +4,7 @@
     "userInfos": {
       "title": "T'es qui toi ?",
       "pseudo": "Ton pseudo",
-      "email": "Ton email @eleve.isep.fr",
+      "email": "prenom.nom@eleve.isep.fr",
       "password": "Ton mot de passe",
       "emailCheckMessage": "Check tes mails pour valider ton inscription",
       "startButton":  "Commencer l'aventure !"
