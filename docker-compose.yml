@@ -28,3 +28,12 @@ services:
       - /usr/src/app/build
     environment: 
       - NODE_ENV=production
+
+  bot:
+    build:
+      context: ./overbot
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./overbot:/usr/src/app
+      - /usr/src/app/node_modules # Avoid mixing files
