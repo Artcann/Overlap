@@ -4,7 +4,7 @@
     "userInfos": {
       "title": "Who are you?",
       "pseudo": "Your nickname",
-      "email": "Your email @eleve.isep.fr",
+      "email": "firstname.lastname@eleve.isep.fr",
       "password": "Your password",
       "emailCheckMessage": "Check your mail to validate your registration",
       "startButton":  "Start the adventure !"
