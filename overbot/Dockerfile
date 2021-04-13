@@ -8,4 +8,4 @@ COPY . .
 
 RUN npm install --quiet
 
-CMD node server
+CMD node index
