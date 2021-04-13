@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 exports.fetchRanking = async () => {
     try {
-        const res = await fetch('http://localhost:3000/game/ranking', {
+        const res = await fetch('https://api.overlap-bde.fr/game/ranking', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
