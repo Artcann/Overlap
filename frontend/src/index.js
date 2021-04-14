@@ -20,6 +20,20 @@ console.log(`
 /!\\ Error /!\\ Error /!\\ Error /!\\ \n
 `)
 
+console.error(`Oulala ! 🍩 Connection to subdomain pop.overlap-bde.fr was lost !`)
+
+console.log('Awaiting new subdomain')
+
+console.log(`%c
+/!\\ Error /!\\ Error /!\\ Error /!\\ \n
+The subdomain was retrived but the function \n
+was badly implemented and it is now lost \n
+somewhere on the website. \n
+Please help us out ! Find the password before \n
+all the popculture gets lost ! \n
+/!\\ Error /!\\ Error /!\\ Error /!\\ \n
+`, 'color: red; font-weight: bold;')
+
 /* Polyfills */
 if (typeof window !== "undefined") {
   window.Buffer = buffer;
